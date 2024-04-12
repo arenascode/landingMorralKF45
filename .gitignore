@@ -4,6 +4,7 @@ node_modules/
 # Archivo de variables de entorno
 api/.env.dev
 api/.env.prod
+client/.env
 
 # Archivos de construcción
 /build

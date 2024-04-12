@@ -28,12 +28,12 @@ function App() {
   // }
 
   const { currentUser } = useSessions()// Temporary
-
-  console.log({currentUserAPP: currentUser});
+  const BASE_URL = import.meta.env.BASE_URL
+  console.log(import.meta.env);
 
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
-      return <Navigate to={"/login"} />;
+      return <Navigate to={`${BASE_URL}/login`} />;
     }
     return children;
   };
@@ -55,11 +55,11 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: "/login",
+      path: `${BASE_URL}/login`,
       element: <Login />,
     },
     {
-      path: "/admin",
+      path: `${BASE_URL}/admin`,
       element: (
         <ProtectedRoute>
           <DashboardLayout />
@@ -67,13 +67,13 @@ function App() {
       ),
       children: [
         {
-          path: "/admin",
+          path: `${BASE_URL}/admin`,
           element: <Dashboard />,
         },
       ],
     },
     {
-      path: "/",
+      path: `${BASE_URL}`,
       element: <Home />,
     },
   ]);
