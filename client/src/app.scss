@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "./scss/base";
+@import "./pages/home/home.scss";
+
+@font-face {
+  font-family: "Revamped";
+  src:url('/assets/fonts/Revamped.otf');
+  font-family: "Bucko";
+  src:url('/assets/fonts/BuckoStdRegular.otf');
+}
+
+:root {
+  //* Colors
+  --color-verdeOscuro: #1b2e05;
+  --color-verdeClaro: #517b1f;
+  --color-span: #aedb7a;
+  --cta-button: #0c9700;
+  //* Fonts
+  --title-font: "Revamped", sans-serif;
+  --body-font: "Bucko", sans-serif;
+}
+
+

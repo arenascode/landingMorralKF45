@@ -1,0 +1,43 @@
+@import "../../scss/base";
+
+#dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+  background-color: rgb(178, 186, 169);
+  .dashboard {
+    width: 100%;
+    @include mobile {
+      flex-direction: column;
+    }
+    #dashboard_Content {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      height: max-content;
+      @include mobile {
+        padding: 0.5rem;
+      }
+      @include tablet {
+        padding: 0.2rem;
+      }
+      h1 {
+        font-size: 1.7rem;
+        font-weight: 600;
+        text-align: center;
+      }
+      .clientsChartContainer {
+        // margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-height: 80%;
+        padding: 1rem 0 2rem;
+        .chartClients {
+         overflow-y: scroll;
+        }
+      }
+    }
+  }
+}

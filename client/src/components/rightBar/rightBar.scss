@@ -1,0 +1,75 @@
+@import "../../scss/base";
+
+#rightBarContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: rgb(27, 46, 5);
+  background: linear-gradient(
+    180deg,
+    rgba(27, 46, 5, 1) 27%,
+    rgba(81, 123, 31, 1) 60%
+  );
+  color: white;
+  @include mobile {
+    margin: 0.5rem;
+    border-radius: 20px;
+  }
+  .performanceContainer {
+    .performanceContainer_title {
+      h2 {
+        font-size: 1.3rem;
+      }
+    }
+    hr {
+      width: 100%;
+      color: var(--separator-color);
+      border: none;
+      height: 1px;
+      background-color: var(--separator-color);
+      margin: 1rem 0;
+    }
+    .conversionContent {
+      display: flex;
+      flex-direction: column;
+      .table {
+        background: rgb(219, 223, 214);
+        color: black;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1rem;
+        @include mobile {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+        }
+        .table_totalTitle {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          h3 {
+          font-weight: 600;
+          font-size: 1.1rem;
+        }
+        }
+        
+        .table_content_total {
+          font-size: 1.2rem;
+          font-weight: 600;
+        }
+        .table_Content {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.8rem;
+          .ayer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+          }
+        }
+      }
+    }
+  }
+}
