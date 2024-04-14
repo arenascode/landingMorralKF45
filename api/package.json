@@ -7,7 +7,7 @@
   "scripts": {
     "start:dev": "NODE_ENV='dev' node --env-file .env.dev --watch .",
     "start:prod": "NODE_ENV='prod' node --env-file .env.prod --watch .",
-    "start": "node ./src/server.js",
+    "start": "node --env-file .env ./src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

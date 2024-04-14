@@ -29,8 +29,7 @@ function App() {
 
   const { currentUser } = useSessions()// Temporary
   const BASE_URL = import.meta.env.BASE_URL
-  console.log(import.meta.env);
-
+  console.log({BASE_URL});
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
       return <Navigate to={`${BASE_URL}/login`} />;
