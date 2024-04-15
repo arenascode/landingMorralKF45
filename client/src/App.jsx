@@ -18,21 +18,12 @@ import Home from "./pages/home/Home.jsx";
 import { useSessions } from "./context/authContext.jsx";
 
 function App() {
-  // const [openForm, setOpenForm] = useState(false);
-
-  // const changeSlide = (slideId) => {
-  //   const targetSlide = document.getElementById(slideId)
-  //   if (targetSlide) {
-  //     targetSlide.scrollIntoView({ block:"nearest", inline:"center"})
-  //   }
-  // }
-
-  const { currentUser } = useSessions()// Temporary
-  const BASE_URL = import.meta.env.BASE_URL
-  console.log({BASE_URL});
+  
+  const { currentUser } = useSessions()
+  
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
-      return <Navigate to={`${BASE_URL}/login`} />;
+      return <Navigate to={`/login`} />;
     }
     return children;
   };
@@ -54,11 +45,11 @@ function App() {
 
   const router = createBrowserRouter([
     {
-      path: `${BASE_URL}/login`,
+      path: `/login`,
       element: <Login />,
     },
     {
-      path: `${BASE_URL}/admin`,
+      path: `/admin`,
       element: (
         <ProtectedRoute>
           <DashboardLayout />
@@ -66,13 +57,13 @@ function App() {
       ),
       children: [
         {
-          path: `${BASE_URL}/admin`,
+          path: `/admin`,
           element: <Dashboard />,
         },
       ],
     },
     {
-      path: `${BASE_URL}`,
+      path: ``,
       element: <Home />,
     },
   ]);
