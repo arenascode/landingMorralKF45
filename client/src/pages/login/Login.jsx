@@ -65,7 +65,7 @@ const Login = () => {
 
     try {
       await adminLogin(dataToSend);
-      navigate("/landingPageKratosForce/admin");
+      navigate("/admin");
     } catch (error) {
       setLoginError(error.response.data);
     }
