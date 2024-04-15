@@ -13,9 +13,9 @@ app.use(
       "http://127.0.0.1:5173",
       "http://localhost:3000",
       "http://localhost:5173",
-      "http://morralkf45.shop",
-      "http://www.morralkf45.shop",
-      "http://77.37.63.218"
+      "https://morralkf45.shop",
+      "https://www.morralkf45.shop",
+      "https://77.37.63.218"
     ],
     methods: "GET,HEAD,PUT,POST,DELETE",
     credentials: true,
