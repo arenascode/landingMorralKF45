@@ -6,7 +6,6 @@ import cors from "cors"
 import db from "../connect.js";
 
 export const app = express()
-console.log({ envNode: process.env});
 app.use(cookieParser(secretCookie));
 app.use(
   cors({
