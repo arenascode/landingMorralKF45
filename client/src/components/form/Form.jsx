@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./form.scss";
 import PropTypes from "prop-types";
 import { makeRequest } from "../../axios.js";
-// import { makeRequest } from "../../axios.js";
+import ReactPixel from "react-facebook-pixel"
 
 const Form = ({ setOpenForm, setThanksPage }) => {
   const [colorSelected, setColorSelected] = useState("");
@@ -50,8 +50,9 @@ const Form = ({ setOpenForm, setThanksPage }) => {
     }
     setErrMail(false)
   }
-  // console.log(formData);
   
+  const fbq = ReactPixel
+
   const handleForm = async (e) => {
     e.preventDefault()
     const form = document.querySelector('.formToSend')
@@ -112,6 +113,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
       }
       
       await makeRequest.post('/purchase/newPurchase', purchaseData)
+      fbq.track('Purchase', {currency: "COL", value:169900})
       setOpenForm(false)
       setThanksPage(true)
       setSomeErr('')
@@ -119,14 +121,18 @@ const Form = ({ setOpenForm, setThanksPage }) => {
       console.log(error);
       setSomeErr(error.message)
     }
-
   };
 
+  const closeForm = () => {
+    console.log(`registrando cierre del form`);
+    setOpenForm(false)
+    fbq.trackCustom('FormClosed')
+  }
   return (
     <div id="modalForm">
       <div className="purchaseForm">
         <div className="closeBtn">
-          <button onClick={() => setOpenForm(false)}>X</button>
+          <button onClick={closeForm}>X</button>
         </div>
         <div className="purchaseForm_title">
           <h4>¡Pide Tu Morral en OFERTA!</h4>

@@ -2,8 +2,9 @@ import "./home.scss";
 import "../../app.scss";
 import Video from "../../components/video/Video.jsx";
 import Form from "../../components/form/Form.jsx";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ThanksPage from "../thanksPage/ThanksPage.jsx";
+import ReactPixel from "react-facebook-pixel";
 
 const Home = () => {
   const [openForm, setOpenForm] = useState(false);
@@ -15,6 +16,56 @@ const Home = () => {
       targetSlide.scrollIntoView({ block: "nearest", inline: "center" });
     }
   };
+  const fbq = ReactPixel;
+
+  const handleOpenForm = () => {
+    fbq.track("OpenForm");
+    console.log("registrando formulario abierto");
+    setOpenForm(true);
+  };
+
+  //* To know until which section the user browsed the page
+  const lastSectionVisitedRef = useRef('')
+
+  useEffect(() => {
+    const sections = document.querySelectorAll(".section");
+    const sectionOffsets = {};
+    // Calcular la posición de inicio y fin de cada sección
+    sections.forEach((section) => {
+      const { top, height } = section.getBoundingClientRect();
+      const sectionId = section.getAttribute("id");
+      sectionOffsets[sectionId] = {
+        start: top + window.scrollY,
+        end: top + window.scrollY + height,
+      };
+    });
+
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      // Determinar la sección actual
+      let currentSection = "";
+      for (const sectionId in sectionOffsets) {
+        const { start, end } = sectionOffsets[sectionId];
+        if (scrollPosition >= start && scrollPosition < end) {
+          currentSection = sectionId;
+          break;
+        }
+      }
+
+      // Enviar evento de seguimiento personalizado para la sección actual
+      if (currentSection && currentSection !== lastSectionVisitedRef.current) {
+        console.log({currentSectionToSend: currentSection});
+        fbq.trackCustom("SectionAchieved", { section: currentSection });
+        lastSectionVisitedRef.current = currentSection
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="#app">
@@ -25,7 +76,7 @@ const Home = () => {
         </p>
       </nav>
       <main>
-        <div id="mainBenefit">
+        <div id="mainBenefit" className='section'>
           <h1 className="desktopTitle">
             ¿Estás buscando un morral que no solo sea funcional y resistente,
             sino también elegante para llevar en tu día a día y útil para tus
@@ -38,7 +89,10 @@ const Home = () => {
           <div className="imgAndTextContainer">
             <div className="imgContainer">
               <div className="w-full carousel rounded-box h-[100%]">
-                <div id="slide1" className="carousel-item relative w-full h-full">
+                <div
+                  id="slide1"
+                  className="carousel-item relative w-full h-full"
+                >
                   <img
                     src="assets/img/verdeOlivo4.png"
                     className="w-full"
@@ -140,7 +194,7 @@ const Home = () => {
                 </p>
               </div>
               <div className="ctaContainer">
-                <button onClick={() => setOpenForm(true)}>
+                <button onClick={handleOpenForm}>
                   ¡QUIERO EL MORRAL!
                   <svg
                     fill="none"
@@ -173,7 +227,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div id="listOfBenefits">
+        <div id="listOfBenefits" className='section'>
           <div className="benefitItem benefitOne">
             <div className="benefit_body">
               <h4>✅ EL ESPACIO QUE NECESITAS</h4>
@@ -215,23 +269,20 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div id="getPromoBar">
+        <div id="getPromoBar" className='section'>
           <p>
             ¡Adquiere El Tuyo <span>HOY</span> En <span>DESCUENTO!</span>
           </p>
         </div>
         {/* VIDEO */}
         <Video />
-        <div id="priceContainer" className="offer">
+        <div id="priceContainer" className="offer section">
           <div className="prices">
             <div className="price before">Antes: $299.000</div>
             <div className="price after">HOY: $169.900</div>
           </div>
-          {/* <div className="contraentrega">
-            Envío <span>GRATIS</span> + Pago <span>CONTRAENTREGA</span>
-          </div> */}
           <div className="ctaContainer">
-            <button onClick={() => setOpenForm(true)}>
+            <button onClick={handleOpenForm}>
               ¡Llevalo y paga en casa!{" "}
               <svg
                 fill="none"
@@ -263,7 +314,7 @@ const Home = () => {
           </div>
         </div>
         {/* Client Reviews - Social Testing */}
-        <div id="clientReviews">
+        <div id="clientReviews" className='section'>
           <h4>Experiencias De Nuestros Clientes</h4>
           <div className="reviewsContainer">
             <div className="review">
@@ -300,7 +351,7 @@ const Home = () => {
             🎁 ¡Obtén regalos <span>GRATIS</span> con tu compra hoy mismo! 🎁
           </p>
         </div>
-        <div id="bonus">
+        <div id="bonus" className='section'>
           <div className="gift regalo">
             <h3 className="regalo_title">Regalo # 1</h3>
             <div className="bonus bonus1">
@@ -350,15 +401,15 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div id="priceContainer2" className="offer">
+        <div id="priceContainer2" className="offer section">
           <div className="prices">
             <div className="price before">Antes: $299.000</div>
             <div className="price after">HOY: $169.900</div>
           </div>
         </div>
-        <div id="cta">
+        <div id="cta" className="section">
           <div className="offer2 ctaContainer">
-            <button onClick={() => setOpenForm(true)}>
+            <button onClick={handleOpenForm}>
               ¡Llevalo y paga en casa!{" "}
               <svg
                 fill="none"
@@ -389,7 +440,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div id="characteristics">
+        <div id="characteristics" className='section'>
           <h3>Caracteristicas De Tu Morral</h3>
           <div className="textAndImgContainer">
             <div className="imgContainer">
@@ -465,9 +516,9 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div id="cta2">
+        <div id="cta2" className="section">
           <div className="offer2 ctaContainer3">
-            <button onClick={() => setOpenForm(true)}>
+            <button onClick={handleOpenForm}>
               ¡Llevalo y paga en casa!{" "}
               <svg
                 fill="none"
@@ -498,7 +549,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div id="securePurchase">
+        <div id="securePurchase" className='section'>
           <div className="securePurchase">
             <div className="securePurchase_title">
               <span>COMPRA ASEGURADA</span>
@@ -575,7 +626,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div id="colorOptions">
+        <div id="colorOptions" className='section'>
           <h3>Elige Tu estilo</h3>
           <div className="colorOptionsContainer">
             <div className="colorOption green">
@@ -608,9 +659,9 @@ const Home = () => {
             <div className="price after">HOY: $169.900</div>
           </div>
         </div>
-        <div id="cta3">
+        <div id="cta3" className="section">
           <div className="ctaContainer">
-            <button onClick={() => setOpenForm(true)}>
+            <button onClick={handleOpenForm}>
               ¡QUIERO EL MORRAL!{" "}
               <svg
                 fill="none"
@@ -641,7 +692,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div id="commonQuestions">
+        <div id="commonQuestions" className='section'>
           <div className="left">
             <div className="collapse collapse-plus bg-base-200">
               <input type="radio" name="my-accordion-3" />
@@ -717,7 +768,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div id="priceContainer3" className="offer">
+        <div id="priceContainer3" className="offer section">
           <div className="prices">
             <div className="price before">Antes: $299.000</div>
             <div className="price after">HOY: $169.000</div>
@@ -726,7 +777,7 @@ const Home = () => {
             Envío <span>GRATIS</span> + Pago <span>CONTRAENTREGA</span>
           </div>
           <div className="ctaContainer">
-            <button onClick={() => setOpenForm(true)}>
+            <button onClick={handleOpenForm}>
               ¡Llevalo y paga en casa!{" "}
               <svg
                 fill="none"
@@ -770,7 +821,7 @@ const Home = () => {
             </a>
           </button>
         </div>
-        <footer>
+        <footer className='section'>
           <div className="imgContainer">
             <img src="assets/img/KratosLogo.png" alt="" />
           </div>
