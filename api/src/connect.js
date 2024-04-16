@@ -11,7 +11,6 @@ let db
 
 if (environment == "prod") {
   // Conexión a MongoDB en producción
-  console.log({environment});
   mongoose
     .connect(CNX_STR, {
       useNewUrlParser: true,

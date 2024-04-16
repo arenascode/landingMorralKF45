@@ -12,7 +12,6 @@ class AdminMysqlDao {
 
     try {
       const [rows] = await this.db.query(queryLogin, [email]);
-      console.log({rowsDao: rows});
       if (rows.length > 0) {
         return rows[0]
       } else {

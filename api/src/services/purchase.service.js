@@ -11,10 +11,8 @@ class ClientService {
 
     try {
       const clientSaved = await clientRepository.newClient(newClient)
-      console.log({ clientSavedService: clientSaved });
       if (clientSaved) {
         const sendMail = await mailService.sendMailToNotifyPurchase(newClient)
-        console.log(sendMail);
       }
       return clientSaved
     } catch (error) {
@@ -26,8 +24,6 @@ class ClientService {
 
     try {
       const clients = await clientRepository.getClients()
-      console.log(clients);
-      
       return clients
     } catch (error) {
       return error.message

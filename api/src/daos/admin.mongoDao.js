@@ -7,7 +7,6 @@ class AdminMongoDao {
   }
 
   async findAdmin(email) {
-    console.log({email});
     return await this.collection.findOne({email: email})
   }
 } 

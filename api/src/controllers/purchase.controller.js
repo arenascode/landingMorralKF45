@@ -2,10 +2,9 @@ import clientService from "../services/purchase.service.js";
 
 export async function newPurchase(req, res, next) {
   
-  console.log(req.body);
   try {
     const result = await clientService.newClient(req.body)
-    console.log({resultController: result});
+    
     if (result) {
       res.status(200).json({message: 'purchase was saved succesfully'})
     }
@@ -20,7 +19,7 @@ export async function getClients(req, res, next) {
 
   try {
     const clients = await clientService.getClients()
-console.log({clientsController: clients});
+
     if (clients) {
       res.status(200).json(clients)
     } else {

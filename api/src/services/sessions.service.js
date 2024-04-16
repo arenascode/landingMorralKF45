@@ -9,12 +9,9 @@ class AdminService {
     try {
       const adminSaved = await adminRepository.findAdmin(adminDataReceived.username)
 
-      console.log({ adminService: adminSaved });
       if (adminSaved) {
 
         const passwordCheck = isValidPassword(adminDataReceived.password, adminSaved.password)
-
-        console.log({ passwordCheck });
         
         if (!passwordCheck) {
           throw new Error('invalid data. try again')

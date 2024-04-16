@@ -10,7 +10,6 @@ class ClientsDao {
 
     const newPurchaseQuery = "INSERT INTO clientes (`nombre`, `email`, `telefono`, `ciudad`, `departamento`, `direccion`, `datos adicionales`, `color_morral`, `valor_compra`, `fecha_compra`) VALUES (?)"
 
-    console.log({ purchaseData });
 
     const values = [
       purchaseData.nombre,
@@ -25,10 +24,9 @@ class ClientsDao {
       purchaseData.purchaseDate
     ]
 
-    console.log(values);
     try {
       const [rows] = await this.db.query(newPurchaseQuery, [values])
-      console.log(rows);
+    
       if (rows.affectedRows > 0) {
         return true;
       } else {
@@ -46,7 +44,6 @@ class ClientsDao {
     try {
       const [rows] = await this.db.query(queryGetClients)
   
-      console.log(rows);
       if (rows.length > 0) {
         return rows
       } else {
