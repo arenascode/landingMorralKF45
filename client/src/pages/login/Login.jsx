@@ -59,6 +59,9 @@ const Login = () => {
     for (const [key, value] of formData.entries()) {
       if (value == "") return;
       dataToSend[key] = value;
+      if (key == 'username') {
+        dataToSend['username'] = value.toLowerCase()
+      }
     }
 
     try {
