@@ -11,7 +11,7 @@ const ThanksPage = ({ setThanksPage }) => {
         <div className="imgContainer">
           <img src="assets/img/KratosLogo.png" alt="" />
         </div>
-        <h4>Gracias Por Tu Compra en Kratos Force! 🤜 🤛</h4>
+        <h4>Gracias Por Tu Compra en Kratos Force!</h4>
         <div className="textContainer">
           <p>
             En menos de 24 horas, uno de nuestros asesores se comunicará contigo
@@ -20,7 +20,11 @@ const ThanksPage = ({ setThanksPage }) => {
         </div>
         <div className="socialMedia">
           <div className="socialMedia_item wtsp">
-            <a href="https://wa.link/at6b7o" target="_blank" className="icon wtsp">
+            <a
+              href="https://wa.link/at6b7o"
+              target="_blank"
+              className="icon wtsp"
+            >
               <img src="assets/img/icons/wtp.png" alt="" />
             </a>
             <span>Whatsapp</span>
@@ -57,7 +61,7 @@ const ThanksPage = ({ setThanksPage }) => {
           </div>
         </div>
         <div className="thanksForChoiceUsContainer">
-          <p>¡Gracias por elegirnos!</p>
+          <p>¡Gracias por elegirnos! 🤜 🤛</p>
         </div>
       </div>
     </div>

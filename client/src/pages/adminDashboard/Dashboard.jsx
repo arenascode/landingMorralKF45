@@ -13,7 +13,6 @@ const Clientes = () => {
       await makeRequest.get(
         "/purchase/getClients"
       ).then(res => {
-        console.log(res.data);
         setClientes(res.data);
       })
       

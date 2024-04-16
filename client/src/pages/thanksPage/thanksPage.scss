@@ -16,6 +16,9 @@
   padding: 1rem 10rem;
   overflow-y: scroll;
   z-index: 999;
+  @include tablet {
+    padding: 1rem 3rem;
+  }
   @include mobile {
     padding: 1rem 0.5rem;
   }

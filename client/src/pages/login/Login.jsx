@@ -60,13 +60,14 @@ const Login = () => {
       if (value == "") return;
       dataToSend[key] = value;
     }
-    console.log(dataToSend);
-    console.log(`all fields are full`);
 
     try {
       await adminLogin(dataToSend);
       navigate("/admin");
     } catch (error) {
+      if (error.code == 'ERR_NETWORK') {
+        setLoginError('Error de conexión')
+      }
       setLoginError(error.response.data);
     }
   };
@@ -101,7 +102,7 @@ const Login = () => {
               />
             </label>
 
-            {loginError && loginError}
+            {loginError && <span><b>{loginError}</b></span> }
             <button onClick={handleLogin}>Login</button>
           </form>
         </div>

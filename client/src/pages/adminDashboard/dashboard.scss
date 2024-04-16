@@ -15,7 +15,7 @@
       padding: 2rem;
       display: flex;
       flex-direction: column;
-      height: max-content;
+      height: 100%;
       @include mobile {
         padding: 0.5rem;
       }

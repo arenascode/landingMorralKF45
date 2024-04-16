@@ -9,6 +9,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
   const [subtotal, setSubtotal] = useState(0);
   const [notColorSelected, setNotColorSelected] = useState(false);
   const [errMail, setErrMail] = useState(false)
+  const [someErr, setSomeErr] = useState()
   
 
   const handleSelection = (e) => {
@@ -55,23 +56,23 @@ const Form = ({ setOpenForm, setThanksPage }) => {
     e.preventDefault()
     const form = document.querySelector('.formToSend')
     const inputs = form.querySelectorAll('input')
-    console.log({inputs});
+
     const inputsRequired = Array.from(inputs).filter(input => input.id !== 'datosAdicionales')
-    console.log({inputsRequired});
+    
     const formToSend = new FormData(form)
     formToSend.append("Color", colorSelected)
     inputs.forEach((input) => {
       const errorChild = input.parentNode.querySelector("span")
       if (errorChild) {
         input.parentNode.removeChild(errorChild)
-        console.log(`removing span`);
+        
       }
     })
 
     inputsRequired.forEach((input) => {
       
       if (input.value == "") {
-        console.log('some input is empty');
+        
         input.style.border = "1px solid #ff5252";
 
         const errorMessage = document.createElement('span');
@@ -93,33 +94,30 @@ const Form = ({ setOpenForm, setThanksPage }) => {
 
       const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      console.log(inputs[1].value);
-      if (inputs[1].value != '' && !pattern.test(inputs[1].value)) {
-        console.log(`invalid email format`);
+      
+      if (inputs[1].value != '' && !pattern.test(inputs[1].value)) { 
         setErrMail(true);
-        console.log(errMail);
         return;
       }
 
       const purchaseData = {}
       purchaseData.valorCompra = subtotal
       for (const [key, value] of formToSend.entries()) {
-        console.log(`${key}: ${value}`)
+        
         purchaseData[key] = value
         if (value == '' && key !== 'datosAdicionales') {
-          console.log(`submit canceled`);
+          
           return 
         }
       }
-      console.log(`todos los campos fueron validados`);
-      console.log({purchaseData});
-      const result = await makeRequest.post('/purchase/newPurchase', purchaseData)
-      console.log(result.data);
-      //UNCOMENT AFFTER ALL INPUTS ARE ALREADY VALIDATED
+      
+      await makeRequest.post('/purchase/newPurchase', purchaseData)
       setOpenForm(false)
-      // setThanksPage(true)
+      setThanksPage(true)
+      setSomeErr('')
     } catch (error) {
       console.log(error);
+      setSomeErr(error.message)
     }
 
   };
@@ -133,8 +131,10 @@ const Form = ({ setOpenForm, setThanksPage }) => {
         <div className="purchaseForm_title">
           <h4>¡Pide Tu Morral en OFERTA!</h4>
           <p>
-            ¡Obtén envío GRATIS y paga al recibir! Completa el formulario a
-            continuación para que te llevemos tu pedido directamente a tu
+            ¡Obtén envío <b>GRATIS</b> y <b>Paga al Recibir! </b>
+            <br />
+            Completa el formulario a
+            continuación para que te llevemos tu morral directamente a tu
             puerta.
           </p>
         </div>
@@ -268,6 +268,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
               />
             </label>
             {notColorSelected && <span className="notColorSelected">Olvidaste Seleccionar el Color!</span>}
+            {someErr && <span className="errorSending">{someErr}</span>}
             <button className="btn text-white">
               ¡Pedir y Pagar En Casa!{" "}
               <svg

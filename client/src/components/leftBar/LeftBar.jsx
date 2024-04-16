@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { useSessions } from "../../context/authContext.jsx"
 import "./leftBar.scss"
 
@@ -17,9 +18,15 @@ const LeftBar = () => {
          
       </div>
       <hr />
+      <div className="ctasContainer flex gap-3 flex-col">
+        <div className="ctaGoLanding">
+        <button className="btn btn-success btn-sm text-white"><Link to={'/'}>Ir a la landing</Link></button>
+      </div>
       <div className="CtaContainer">
         <button className="btn btn-sm btn-error text-white" onClick={() => setCurrentUser(null)}>Cerrar Sesión</button>
       </div>
+      </div>
+      
     </div>
   )
 }

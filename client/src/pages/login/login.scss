@@ -43,7 +43,7 @@
         #1b2e0500 27%,
         rgba(82, 123, 31, 0) 60%
       ),
-        url("assets/img/backgroundLogin.png"), center;
+        url("/assets/img/backgroundLogin.png"), center;
       background-size: cover;
       display: flex;
       flex-direction: column;
@@ -54,33 +54,6 @@
       @include mobile {
         overflow: hidden;
         padding: 1rem;
-      }
-      h1 {
-        margin: 0;
-        font-size: 50px;
-        line-height: 60px;
-      }
-      p {
-      }
-      span {
-        font-size: 14px;
-      }
-      button {
-        width: 50%;
-        padding: 5px;
-        color: rebeccapurple;
-        font-weight: bold;
-        border: none;
-        border-radius: 30px;
-        transition-property: scale;
-        transition-duration: 0.2s;
-
-        &:hover {
-          cursor: pointer;
-          scale: 1.02;
-          background: linear-gradient(to right, rebeccapurple, #9a78ab);
-          color: white;
-        }
       }
     }
 
