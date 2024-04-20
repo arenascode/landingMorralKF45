@@ -38,7 +38,7 @@ const Video = () => {
 
   return (
     <div id="videoContainer" className="player">
-      <img src="assets/video/promoVideoMorralKf45.gif" alt="" />
+      <img src="assets/video/promoVideoMorralKf45.webp" alt="" />
       {/* <video
         ref={videoRef}
         onClick={handlePlay}

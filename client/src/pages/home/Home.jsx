@@ -94,7 +94,7 @@ const Home = () => {
                   className="carousel-item relative w-full h-full"
                 >
                   <img
-                    src="assets/img/verdeOlivo4.png"
+                    src="assets/img/verdeOlivo4.webp"
                     className="w-full"
                     alt="Verde Olivo"
                   />
@@ -115,7 +115,7 @@ const Home = () => {
                 </div>
                 <div id="slide2" className="carousel-item relative w-full">
                   <img
-                    src="assets/img/MorralCaqui.png"
+                    src="assets/img/MorralCaqui.webp"
                     className="w-full"
                     alt="Color Desierto"
                   />
@@ -136,7 +136,7 @@ const Home = () => {
                 </div>
                 <div id="slide3" className="carousel-item relative w-full ">
                   <img
-                    src="assets/img/morralBlack.png"
+                    src="assets/img/morralBlack.webp"
                     className="w-full"
                     alt="Tailwind CSS Carousel component"
                   />
@@ -157,7 +157,7 @@ const Home = () => {
                 </div>
                 <div id="slide4" className="carousel-item relative w-full">
                   <img
-                    src="assets/img/morralBeePanal.png"
+                    src="assets/img/morralBeePanal.webp"
                     className="w-full"
                     alt="Bee Panel"
                   />
@@ -238,7 +238,7 @@ const Home = () => {
               <p>50cm(Alto) x30cm(Ancho) x30cm(Largo)</p>
             </div>
             <div className="benefit_img">
-              <img src="assets/img/morralCapacity.png" alt="" />
+              <img src="assets/img/morralCapacity.webp" alt="" />
             </div>
           </div>
           <div className="benefitItem benefitTwo">
@@ -251,7 +251,7 @@ const Home = () => {
               </p>
             </div>
             <div className="benefit_img">
-              <img src="assets/img/morralAgua.png" alt="" />
+              <img src="assets/img/morralAgua.webp" alt="" />
             </div>
           </div>
           <div className="benefitItem benefitThree">
@@ -265,7 +265,7 @@ const Home = () => {
               </p>
             </div>
             <div className="benefit_img">
-              <img src="assets/img/MorralMole.png" alt="" />
+              <img src="assets/img/MorralMole.webp" alt="" />
             </div>
           </div>
         </div>
@@ -321,7 +321,7 @@ const Home = () => {
               <div className="containerIphone">
                 <div id="project1" className="iphone-border">
                   <div className="screen">
-                    <img src="assets/img/reviews/review1.jpeg" alt="" />
+                    <img src="assets/img/reviews/review1.webp" alt="" />
                   </div>
                 </div>
               </div>
@@ -330,7 +330,7 @@ const Home = () => {
               <div className="containerIphone">
                 <div id="project1" className="iphone-border">
                   <div className="screen">
-                    <img src="assets/img/reviews/review2.jpeg" alt="" />
+                    <img src="assets/img/reviews/review2.webp" alt="" />
                   </div>
                 </div>
               </div>
@@ -339,7 +339,7 @@ const Home = () => {
               <div className="containerIphone">
                 <div id="project1" className="iphone-border">
                   <div className="screen">
-                    <img src="assets/img/reviews/review3.jpeg" alt="" />
+                    <img src="assets/img/reviews/review3.webp" alt="" />
                   </div>
                 </div>
               </div>
@@ -356,7 +356,7 @@ const Home = () => {
             <h3 className="regalo_title">Regalo # 1</h3>
             <div className="bonus bonus1">
               <div className="imgContainer">
-                <img src="assets/img/manualCuidadoMorralImg.png" alt="" />
+                <img src="assets/img/manualCuidadoMorralImg.webp" alt="" />
               </div>
               <div className="textContainer">
                 <h4>🎁 Manual De Uso Y Cuidado</h4>
@@ -372,7 +372,7 @@ const Home = () => {
             <h3 className="regalo_title">Regalo # 2</h3>
             <div className="bonus bonus2">
               <div className="imgContainer">
-                <img src="assets/img/manillaSupervivencia.png" alt="" />
+                <img src="assets/img/manillaSupervivencia.webp" alt="" />
               </div>
               <div className="textContainer">
                 <h4>🎁 Manilla de Supervivencia</h4>
@@ -388,7 +388,7 @@ const Home = () => {
             <h3 className="regalo_title">Regalo # 3</h3>
             <div className="bonus bonus3">
               <div className="imgContainer">
-                <img src="assets/img/parcheKratos.png" alt="" />
+                <img src="assets/img/parcheKratos.webp" alt="" />
               </div>
               <div className="textContainer">
                 <h4>🎁 Parche Kratos Force</h4>
@@ -444,7 +444,7 @@ const Home = () => {
           <h3>Caracteristicas De Tu Morral</h3>
           <div className="textAndImgContainer">
             <div className="imgContainer">
-              <img src="assets/img/verdeOlivo1.png" alt="" />
+              <img src="assets/img/verdeOlivo1.webp" alt="" />
             </div>
             <div className="textContainer">
               <div className="left">
@@ -631,19 +631,19 @@ const Home = () => {
           <div className="colorOptionsContainer">
             <div className="colorOption green">
               <div className="imgContainer">
-                <img src="assets/img/morralArmyGreen.png" alt="morralVerde" />
+                <img src="assets/img/morralArmyGreen.webp" alt="morralVerde" />
               </div>
               <span> Verde Olivo </span>
             </div>
             <div className="colorOption black">
               <div className="imgContainer">
-                <img src="assets/img/morralBlack.png" alt="MorralNegro" />
+                <img src="assets/img/morralBlack.webp" alt="MorralNegro" />
               </div>
               <span>Negro Noche</span>
             </div>
             <div className="colorOption desierto">
               <div className="imgContainer">
-                <img src="assets/img/MorralCaqui.png" alt="colorDesierto" />
+                <img src="assets/img/MorralCaqui.webp" alt="colorDesierto" />
               </div>
               <span>Color Desierto</span>
             </div>
@@ -758,13 +758,13 @@ const Home = () => {
           </div>
           <div className="right">
             <div className="firstImg">
-              <img src="assets/img/backMorral.png" alt="" />
+              <img src="assets/img/backMorral.webp" alt="" />
             </div>
             <div className="secondImg">
-              <img src="assets/img/sideMorral.png" alt="" />
+              <img src="assets/img/sideMorral.webp" alt="" />
             </div>
             <div className="thirdImg">
-              <img src="assets/img/morralAbiertoCaqui.jpg" alt="" />
+              <img src="assets/img/morralAbiertoCaqui.webp" alt="" />
             </div>
           </div>
         </div>
@@ -823,7 +823,7 @@ const Home = () => {
         </div>
         <footer className='section'>
           <div className="imgContainer">
-            <img src="assets/img/KratosLogo.png" alt="" />
+            <img src="assets/img/KratosLogo.webp" alt="" />
           </div>
           <span className="sign">Creado Por ArenasCode ©</span>
         </footer>
