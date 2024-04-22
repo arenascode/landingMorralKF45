@@ -154,7 +154,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
                 onClick={handleSelection}
               >
                 Color Desierto
-                <img src="assets/img/beigeArena.png" alt="" />
+                <img src="assets/img/beigeArena.webp" alt="" />
               </div>
               <div
                 className="form_colorOption blackColor"
@@ -162,7 +162,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
                 onClick={handleSelection}
               >
                 Negro Noche
-                <img src="assets/img/negroNoche.png" alt="" />
+                <img src="assets/img/negroNoche.webp" alt="" />
               </div>
               <div
                 className="form_colorOption greenColor"
@@ -170,7 +170,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
                 onClick={handleSelection}
               >
                 Verde Olivo
-                <img src="assets/img/verdeMilitar.png" alt="" />
+                <img src="assets/img/verdeMilitar.webp" alt="" />
               </div>
             </div>
           </div>
