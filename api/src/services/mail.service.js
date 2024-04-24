@@ -14,7 +14,9 @@ class MailService {
         pass: NodeMailerPass
       }
     })
-
+    console.log({ newClient });
+    console.log({mailTo});
+    
     const templateNotifyPurchase = `
     <body style="font-family: Arial, sans-serif;">
 
@@ -55,15 +57,15 @@ class MailService {
     </tr>
     <tr>
       <td><strong>Color Seleccionado del Morral:</strong></td>
-      <td>${newClient.color}</td>
+      <td>${newClient.color_morral}</td>
     </tr>
     <tr>
       <td><strong>Valor de la Compra:</strong></td>
-      <td>${newClient.valorCompra}</td>
+      <td>${newClient.valor_compra}</td>
     </tr>
     <tr>
       <td><strong>Fecha de la Compra:</strong></td>
-      <td>${newClient.purchaseDate}</td>
+      <td>${newClient.fecha_compra}</td>
     </tr>
   </table>
 
@@ -94,9 +96,6 @@ class MailService {
       return error.message
     }
   }
-
-
-
 }
 
 const mailService = new MailService()
