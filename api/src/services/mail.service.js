@@ -1,4 +1,4 @@
-import { AdminEmail, NodeMailerPass } from "../config/auth.config.js";
+import { AdminEmail, NodeMailerPass, mailTo } from "../config/auth.config.js";
 import nodemailer from "nodemailer"
 
 class MailService {
@@ -6,7 +6,6 @@ class MailService {
   async sendMailToNotifyPurchase(newClient) {
 
     const adminMail = AdminEmail
-    
     const transport = nodemailer.createTransport({
       service: "gmail",
       port: 587,
@@ -76,7 +75,7 @@ class MailService {
 
     const mailOptions = {
       from: "landing Morral KF45",
-      to: adminMail,
+      to: mailTo,
       subject: "Nueva Venta En tu Landing (KF45)",
       html: templateNotifyPurchase
     }
