@@ -25,6 +25,9 @@
     background: white;
     padding: 2rem;
     border-radius: 20px;
+    @include mobile {
+      padding: 1.2rem;
+    }
     .closeBtn {
       position: absolute;
       top: 10px;
@@ -33,21 +36,37 @@
       height: 20px;
       font-size: 1.5rem;
     }
+    .purchaseForm_title {
+      display: flex;
+      flex-direction: column;
+    }
     h4 {
       margin-top: 0.3rem;
+      margin-bottom: 0.7rem;
       text-align: center;
       font-size: 1.5rem;
       font-weight: 600;
     }
     p {
-      margin-top: 1rem;
+      // margin-top: 0.2rem;
       // text-wrap: balance;
       text-align: center;
       font-size: 1.2rem;
       width: 100%;
       @include mobile {
-        font-size: 1rem;
+        font-size: 1.2rem;
       }
+    }
+    .gifts {
+      // font-weight: 600;
+      margin-top: 0.5rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+    .completeFormText {
+      text-align: center;
+      font-size: 1rem;
+      // text-wrap: pretty;
     }
     .formContainer {
       margin-top: 1rem;

@@ -135,10 +135,13 @@ const Form = ({ setOpenForm, setThanksPage }) => {
           <button onClick={closeForm}>X</button>
         </div>
         <div className="purchaseForm_title">
-          <h4>¡Pide Tu Morral en OFERTA!</h4>
+          {/* <h4>¡Pide Tu Morral en OFERTA!</h4>   */}
           <p>
-            ¡Obtén envío <b>GRATIS</b> y <b>Paga al Recibir! </b>
-            <br />
+            ¡Obtén envío <b>GRATIS</b> y <b>Paga al Recibir! </b></p>
+            <span className="gifts">Además lleva con tu compra:
+            <br /> <b>Manual De Uso + Manilla de Supervivencia + Parche Kratos Force</b></span>
+          <br />
+          <p className="completeFormText">
             Completa el formulario a
             continuación para que te llevemos tu morral directamente a tu
             puerta.

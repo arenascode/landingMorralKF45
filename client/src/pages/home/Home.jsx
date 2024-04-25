@@ -16,6 +16,12 @@ const Home = () => {
       targetSlide.scrollIntoView({ block: "nearest", inline: "center" });
     }
   };
+
+  const handleMiniImgs = (e) => {
+    const slideNumber = e.target.parentNode.dataset.img;
+    changeSlide(slideNumber);
+  };
+
   const fbq = ReactPixel;
 
   const handleOpenForm = () => {
@@ -25,7 +31,7 @@ const Home = () => {
   };
 
   //* To know until which section the user browsed the page
-  const lastSectionVisitedRef = useRef('')
+  const lastSectionVisitedRef = useRef("");
 
   useEffect(() => {
     const sections = document.querySelectorAll(".section");
@@ -54,9 +60,9 @@ const Home = () => {
 
       // Enviar evento de seguimiento personalizado para la sección actual
       if (currentSection && currentSection !== lastSectionVisitedRef.current) {
-        console.log({currentSectionToSend: currentSection});
+        console.log({ currentSectionToSend: currentSection });
         fbq.trackCustom("SectionAchieved", { section: currentSection });
-        lastSectionVisitedRef.current = currentSection
+        lastSectionVisitedRef.current = currentSection;
       }
     };
 
@@ -76,32 +82,34 @@ const Home = () => {
         </p>
       </nav>
       <main>
-        <div id="mainBenefit" className='section'>
+        <div id="mainBenefit" className="section">
           <h1 className="desktopTitle">
             ¿Estás buscando un morral que no solo sea funcional y resistente,
             sino también elegante para llevar en tu día a día y útil para tus
             aventuras de supervivencia?
           </h1>
-          <h1 className="mobileTitle">
-            ¿Quieres un morral funcional y con estilo para las aventuras de tu
-            día a día?
+          <h1 className="mobileTitle gradient-text">
+            Morral Táctico Confort 45 Litros
           </h1>
           <div className="imgAndTextContainer">
             <div className="imgContainer">
-              <div className="w-full carousel rounded-box h-[100%]">
+              <div
+                id="carouselImgs"
+                className="w-full carousel rounded-box h-[inherit]"
+              >
                 <div
                   id="slide1"
                   className="carousel-item relative w-full h-full"
                 >
                   <img
-                    src="assets/img/verdeOlivo4.webp"
+                    src="assets/img/Morrales.webp"
                     className="w-full"
-                    alt="Verde Olivo"
+                    alt="Morrales"
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-0.5 right-5 top-1/2 w-[98%]">
                     <button
                       className="btn btn-circle btn-md text-lg btn-success text-white"
-                      onClick={() => changeSlide("slide4")}
+                      onClick={() => changeSlide("slide5")}
                     >
                       ❮
                     </button>
@@ -116,7 +124,7 @@ const Home = () => {
                 <div id="slide2" className="carousel-item relative w-full">
                   <img
                     src="assets/img/MorralCaqui.webp"
-                    className="w-full"
+                    className="w-full slide2"
                     alt="Color Desierto"
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-0.5 right-5 top-1/2 w-[98%]">
@@ -157,14 +165,35 @@ const Home = () => {
                 </div>
                 <div id="slide4" className="carousel-item relative w-full">
                   <img
-                    src="assets/img/morralBeePanal.webp"
+                    src="assets/img/morralArmyGreen.webp"
+                    className="w-full"
+                    alt="Morral Verde Olivo"
+                  />
+                  <div className="absolute flex justify-between transform -translate-y-1/2 left-0.5 right-5 top-1/2 w-[98%]">
+                    <button
+                      className="btn btn-circle btn-md text-lg btn-success text-white"
+                      onClick={() => changeSlide("slide3")}
+                    >
+                      ❮
+                    </button>
+                    <button
+                      className="btn btn-circle btn-md text-lg btn-success text-white"
+                      onClick={() => changeSlide("slide5")}
+                    >
+                      ❯
+                    </button>
+                  </div>
+                </div>
+                <div id="slide5" className="carousel-item relative w-full">
+                  <img
+                    src="assets/img/beePanel.webp"
                     className="w-full"
                     alt="Bee Panel"
                   />
                   <div className="absolute flex justify-between transform -translate-y-1/2 left-0.5 right-5 top-1/2 w-[98%]">
                     <button
                       className="btn btn-circle btn-md text-lg btn-success text-white"
-                      onClick={() => changeSlide("slide3")}
+                      onClick={() => changeSlide("slide4")}
                     >
                       ❮
                     </button>
@@ -177,57 +206,312 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-              {/* <img src="assets/img/Morrales.png" alt="" /> */}
+              <div className="miniImgsContainer">
+                <div
+                  className="miniImg slide1"
+                  data-img="slide1"
+                  onClick={handleMiniImgs}
+                >
+                  <img src="assets/img/Morrales.webp" alt="" />
+                </div>
+                <div
+                  className="miniImg slide2"
+                  data-img="slide2"
+                  onClick={handleMiniImgs}
+                >
+                  <img src="assets/img/MorralCaqui.webp" alt="" />
+                </div>
+                <div
+                  className="miniImg slide3"
+                  data-img="slide3"
+                  onClick={handleMiniImgs}
+                >
+                  <img src="assets/img/morralBlack.webp" alt="" />
+                </div>
+                <div
+                  className="miniImg slide4"
+                  data-img="slide4"
+                  onClick={handleMiniImgs}
+                >
+                  <img src="assets/img/morralArmyGreen.webp" alt="" />
+                </div>
+                <div
+                  className="miniImg slide5"
+                  data-img="slide5"
+                  onClick={handleMiniImgs}
+                >
+                  <img src="assets/img/beePanel.webp" alt="" />
+                </div>
+              </div>
             </div>
             <div className="textContainer">
-              <h2 className="text_title">Morral Tactico KF 45</h2>
+              <div className="reviewsContainer">
+                <div className="starItem">
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 426.667 426.667"
+                    width={"20px"}
+                  >
+                    <polygon
+                      style={{ fill: "#FAC917" }}
+                      points="213.333,10.441 279.249,144.017 426.667,165.436 320,269.41 345.173,416.226 213.333,346.91 
+	81.485,416.226 106.667,269.41 0,165.436 147.409,144.017 "
+                    />
+                  </svg>
+                </div>
+                <div className="starItem">
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 426.667 426.667"
+                    width={"20px"}
+                  >
+                    <polygon
+                      style={{ fill: "#FAC917" }}
+                      points="213.333,10.441 279.249,144.017 426.667,165.436 320,269.41 345.173,416.226 213.333,346.91 
+	81.485,416.226 106.667,269.41 0,165.436 147.409,144.017 "
+                    />
+                  </svg>
+                </div>
+                <div className="starItem">
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 426.667 426.667"
+                    width={"20px"}
+                  >
+                    <polygon
+                      style={{ fill: "#FAC917" }}
+                      points="213.333,10.441 279.249,144.017 426.667,165.436 320,269.41 345.173,416.226 213.333,346.91 
+	81.485,416.226 106.667,269.41 0,165.436 147.409,144.017 "
+                    />
+                  </svg>
+                </div>
+                <div className="starItem">
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 426.667 426.667"
+                    width={"20px"}
+                  >
+                    <polygon
+                      style={{ fill: "#FAC917" }}
+                      points="213.333,10.441 279.249,144.017 426.667,165.436 320,269.41 345.173,416.226 213.333,346.91 
+	81.485,416.226 106.667,269.41 0,165.436 147.409,144.017 "
+                    />
+                  </svg>
+                </div>
+                <div className="starItem">
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    viewBox="0 0 426.667 426.667"
+                    width={"20px"}
+                  >
+                    <polygon
+                      style={{ fill: "#FAC917" }}
+                      points="213.333,10.441 279.249,144.017 426.667,165.436 320,269.41 345.173,416.226 213.333,346.91 
+	81.485,416.226 106.667,269.41 0,165.436 147.409,144.017 "
+                    />
+                  </svg>
+                </div>
+                <a href="#clientReviews" className="rating">
+                  5/5 • 3 Reviews
+                </a>
+              </div>
+              <div className="priceContainer">
+                <div className="before">$229.000 COP</div>
+                <div className="after">$169.900 COP</div>
+              </div>
               <div className="text_body">
                 <p>
                   Descubre una experiencia única con nuestro Morral Táctico
                   <span> KRATOS FORCE </span>, donde el rendimiento se une al
                   diseño innovador para brindarte funcionalidad de primera
                   clase.
-                  <p>
-                    Sumérgete en la comodidad que ofrece mientras exploras su
-                    excelente relación precio-calidad.
-                  </p>
                 </p>
               </div>
               <div className="ctaContainer">
                 <button onClick={handleOpenForm}>
-                  ¡QUIERO EL MORRAL!
-                  <svg
-                    fill="none"
-                    stroke="#ffffff"
-                    height="27"
-                    viewBox="0 0 30 27"
-                    width="30"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style={{ fontWeight: 600 }}
-                    strokeWidth={2}
-                  >
-                    <path d="M1.39999 1.70001H6.60001" stroke="#ffffff" />
-                    <path d="M6.60001 1.70001L11 18.9" />
-                    <path d="M11.8 18.9H28.3" stroke="##ffffff" />
-                    <path
-                      d="M13.8 25.7C15.4569 25.7 16.8 24.3569 16.8 22.7C16.8 21.0432 15.4569 19.7 13.8 19.7C12.1431 19.7 10.8 21.0432 10.8 22.7C10.8 24.3569 12.1431 25.7 13.8 25.7Z"
+                  <span>
+                    ¡Oferta Limitada!{" "}
+                    <svg
+                      fill="none"
                       stroke="#ffffff"
-                    />
-                    <path
-                      d="M25.3 25.7C26.9568 25.7 28.3 24.3569 28.3 22.7C28.3 21.0432 26.9568 19.7 25.3 19.7C23.6431 19.7 22.3 21.0432 22.3 22.7C22.3 24.3569 23.6431 25.7 25.3 25.7Z"
-                      stroke="#ffffff"
-                    />
-                    <path
-                      d="M25.7 14.6H11.3C10.7 14.6 10.1 14.2 10 13.6L8.1 6.90001C7.9 6.00001 8.49999 5.20001 9.39999 5.20001H27.5C28.4 5.20001 29.1 6.10001 28.8 6.90001L26.9 13.6C26.9 14.2 26.4 14.6 25.7 14.6Z"
-                      stroke="#ffffff"
-                    />
-                  </svg>
+                      height="27"
+                      viewBox="0 0 30 27"
+                      width="25"
+                      xmlns="http://www.w3.org/2000/svg"
+                      style={{ fontWeight: 600 }}
+                      strokeWidth={2}
+                    >
+                      <path d="M1.39999 1.70001H6.60001" stroke="#ffffff" />
+                      <path d="M6.60001 1.70001L11 18.9" />
+                      <path d="M11.8 18.9H28.3" stroke="##ffffff" />
+                      <path
+                        d="M13.8 25.7C15.4569 25.7 16.8 24.3569 16.8 22.7C16.8 21.0432 15.4569 19.7 13.8 19.7C12.1431 19.7 10.8 21.0432 10.8 22.7C10.8 24.3569 12.1431 25.7 13.8 25.7Z"
+                        stroke="#ffffff"
+                      />
+                      <path
+                        d="M25.3 25.7C26.9568 25.7 28.3 24.3569 28.3 22.7C28.3 21.0432 26.9568 19.7 25.3 19.7C23.6431 19.7 22.3 21.0432 22.3 22.7C22.3 24.3569 23.6431 25.7 25.3 25.7Z"
+                        stroke="#ffffff"
+                      />
+                      <path
+                        d="M25.7 14.6H11.3C10.7 14.6 10.1 14.2 10 13.6L8.1 6.90001C7.9 6.00001 8.49999 5.20001 9.39999 5.20001H27.5C28.4 5.20001 29.1 6.10001 28.8 6.90001L26.9 13.6C26.9 14.2 26.4 14.6 25.7 14.6Z"
+                        stroke="#ffffff"
+                      />
+                    </svg>
+                  </span>
+                  <span>(Recibe Regalos con tu compra)</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div id="listOfBenefits" className='section'>
+        {/* Client Reviews - Social Testing */}
+        <div id="clientReviews" className="section">
+          <h4>Experiencias De Nuestros Clientes</h4>
+          <div className="reviewsContainer">
+            <div className="review">
+              <div className="containerIphone">
+                <div id="project1" className="iphone-border">
+                  <div className="screen">
+                    <img src="assets/img/reviews/review1.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="review">
+              <div className="containerIphone">
+                <div id="project1" className="iphone-border">
+                  <div className="screen">
+                    <img src="assets/img/reviews/review2.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="review">
+              <div className="containerIphone">
+                <div id="project1" className="iphone-border">
+                  <div className="screen">
+                    <img src="assets/img/reviews/review3.webp" alt="" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="getPromoBar2">
+          <p>
+            🎁 ¡Obtén regalos <span>GRATIS</span> con tu compra hoy mismo! 🎁
+          </p>
+        </div>
+        <div id="bonus" className="section">
+          <div className="gift regalo">
+            <h3 className="regalo_title">Regalo # 1</h3>
+            <div className="bonus bonus1">
+              <div className="imgContainer">
+                <img src="assets/img/manualCuidadoMorralImg.webp" alt="" />
+              </div>
+              <div className="textContainer">
+                <h4>🎁 Manual De Uso Y Cuidado</h4>
+                <p>
+                  ¡Queremos que disfrutes al máximo tu morral! Por eso, con tu
+                  compra te obsequiamos un manual en PDF con recomendaciones de
+                  uso y cuidado.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="gift regalo2">
+            <h3 className="regalo_title">Regalo # 2</h3>
+            <div className="bonus bonus2">
+              <div className="imgContainer">
+                <img src="assets/img/paracordSurvival.webp" alt="" />
+              </div>
+              <div className="textContainer">
+                <h4>🎁 Manilla de Supervivencia</h4>
+                <p>
+                  Perfecta para actividades al aire libre como pesca, camping y
+                  situaciones de supervivencia, un complemento ideal para tu
+                  morral. ¡Llévala <span>Gratis</span> con tu compra!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="gift regalo3">
+            <h3 className="regalo_title">Regalo # 3</h3>
+            <div className="bonus bonus3">
+              <div className="imgContainer">
+                <img src="assets/img/parcheKratos.webp" alt="" />
+              </div>
+              <div className="textContainer">
+                <h4>🎁 Parche Kratos Force</h4>
+                <p>
+                  ¡Haz que tu morral sea aún más especial con nuestro parche
+                  exclusivo Kratos Force! Obtén el tuyo GRATIS al realizar tu
+                  compra y dale un toque único a tu estilo.
+                </p>
+              </div>{" "}
+            </div>
+          </div>
+        </div>
+        <div id="priceContainer" className="offer section">
+          <div className="prices">
+            <div className="price before">Antes: $229.000</div>
+            <div className="price after">HOY: $169.900</div>
+          </div>
+          <div className="ctaContainer">
+            <button onClick={handleOpenForm}>
+              ¡Oferta Por Tiempo Limitado!{" "}
+              <svg
+                fill="none"
+                stroke="#ffffff"
+                height="27"
+                viewBox="0 0 30 27"
+                width="22"
+                xmlns="http://www.w3.org/2000/svg"
+                style={{ fontWeight: 600 }}
+                strokeWidth={2}
+              >
+                <path d="M1.39999 1.70001H6.60001" stroke="#ffffff" />
+                <path d="M6.60001 1.70001L11 18.9" />
+                <path d="M11.8 18.9H28.3" stroke="##ffffff" />
+                <path
+                  d="M13.8 25.7C15.4569 25.7 16.8 24.3569 16.8 22.7C16.8 21.0432 15.4569 19.7 13.8 19.7C12.1431 19.7 10.8 21.0432 10.8 22.7C10.8 24.3569 12.1431 25.7 13.8 25.7Z"
+                  stroke="#ffffff"
+                />
+                <path
+                  d="M25.3 25.7C26.9568 25.7 28.3 24.3569 28.3 22.7C28.3 21.0432 26.9568 19.7 25.3 19.7C23.6431 19.7 22.3 21.0432 22.3 22.7C22.3 24.3569 23.6431 25.7 25.3 25.7Z"
+                  stroke="#ffffff"
+                />
+                <path
+                  d="M25.7 14.6H11.3C10.7 14.6 10.1 14.2 10 13.6L8.1 6.90001C7.9 6.00001 8.49999 5.20001 9.39999 5.20001H27.5C28.4 5.20001 29.1 6.10001 28.8 6.90001L26.9 13.6C26.9 14.2 26.4 14.6 25.7 14.6Z"
+                  stroke="#ffffff"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        {/* VIDEO */}
+        <Video />
+        <div id="listOfBenefits" className="section">
           <div className="benefitItem benefitOne">
             <div className="benefit_body">
               <h4>✅ EL ESPACIO QUE NECESITAS</h4>
@@ -269,141 +553,14 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div id="getPromoBar" className='section'>
+        <div id="getPromoBar" className="section">
           <p>
             ¡Adquiere El Tuyo <span>HOY</span> En <span>DESCUENTO!</span>
           </p>
         </div>
-        {/* VIDEO */}
-        <Video />
-        <div id="priceContainer" className="offer section">
-          <div className="prices">
-            <div className="price before">Antes: $299.000</div>
-            <div className="price after">HOY: $169.900</div>
-          </div>
-          <div className="ctaContainer">
-            <button onClick={handleOpenForm}>
-              ¡Llevalo y paga en casa!{" "}
-              <svg
-                fill="none"
-                stroke="#ffffff"
-                height="27"
-                viewBox="0 0 30 27"
-                width="30"
-                xmlns="http://www.w3.org/2000/svg"
-                style={{ fontWeight: 600 }}
-                strokeWidth={2}
-              >
-                <path d="M1.39999 1.70001H6.60001" stroke="#ffffff" />
-                <path d="M6.60001 1.70001L11 18.9" />
-                <path d="M11.8 18.9H28.3" stroke="##ffffff" />
-                <path
-                  d="M13.8 25.7C15.4569 25.7 16.8 24.3569 16.8 22.7C16.8 21.0432 15.4569 19.7 13.8 19.7C12.1431 19.7 10.8 21.0432 10.8 22.7C10.8 24.3569 12.1431 25.7 13.8 25.7Z"
-                  stroke="#ffffff"
-                />
-                <path
-                  d="M25.3 25.7C26.9568 25.7 28.3 24.3569 28.3 22.7C28.3 21.0432 26.9568 19.7 25.3 19.7C23.6431 19.7 22.3 21.0432 22.3 22.7C22.3 24.3569 23.6431 25.7 25.3 25.7Z"
-                  stroke="#ffffff"
-                />
-                <path
-                  d="M25.7 14.6H11.3C10.7 14.6 10.1 14.2 10 13.6L8.1 6.90001C7.9 6.00001 8.49999 5.20001 9.39999 5.20001H27.5C28.4 5.20001 29.1 6.10001 28.8 6.90001L26.9 13.6C26.9 14.2 26.4 14.6 25.7 14.6Z"
-                  stroke="#ffffff"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-        {/* Client Reviews - Social Testing */}
-        <div id="clientReviews" className='section'>
-          <h4>Experiencias De Nuestros Clientes</h4>
-          <div className="reviewsContainer">
-            <div className="review">
-              <div className="containerIphone">
-                <div id="project1" className="iphone-border">
-                  <div className="screen">
-                    <img src="assets/img/reviews/review1.webp" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="review">
-              <div className="containerIphone">
-                <div id="project1" className="iphone-border">
-                  <div className="screen">
-                    <img src="assets/img/reviews/review2.webp" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="review">
-              <div className="containerIphone">
-                <div id="project1" className="iphone-border">
-                  <div className="screen">
-                    <img src="assets/img/reviews/review3.webp" alt="" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="getPromoBar2">
-          <p>
-            🎁 ¡Obtén regalos <span>GRATIS</span> con tu compra hoy mismo! 🎁
-          </p>
-        </div>
-        <div id="bonus" className='section'>
-          <div className="gift regalo">
-            <h3 className="regalo_title">Regalo # 1</h3>
-            <div className="bonus bonus1">
-              <div className="imgContainer">
-                <img src="assets/img/manualCuidadoMorralImg.webp" alt="" />
-              </div>
-              <div className="textContainer">
-                <h4>🎁 Manual De Uso Y Cuidado</h4>
-                <p>
-                  ¡Queremos que disfrutes al máximo tu morral! Por eso, con tu
-                  compra te obsequiamos un manual en PDF con recomendaciones de
-                  uso y cuidado.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="gift regalo2">
-            <h3 className="regalo_title">Regalo # 2</h3>
-            <div className="bonus bonus2">
-              <div className="imgContainer">
-                <img src="assets/img/manillaSupervivencia.webp" alt="" />
-              </div>
-              <div className="textContainer">
-                <h4>🎁 Manilla de Supervivencia</h4>
-                <p>
-                  Perfecta para actividades al aire libre como pesca, camping y
-                  situaciones de supervivencia, un complemento ideal para tu
-                  morral. ¡Llévala <span>Gratis</span> con tu compra!
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="gift regalo3">
-            <h3 className="regalo_title">Regalo # 3</h3>
-            <div className="bonus bonus3">
-              <div className="imgContainer">
-                <img src="assets/img/parcheKratos.webp" alt="" />
-              </div>
-              <div className="textContainer">
-                <h4>🎁 Parche Kratos Force</h4>
-                <p>
-                  ¡Haz que tu morral sea aún más especial con nuestro parche
-                  exclusivo Kratos Force! Obtén el tuyo GRATIS al realizar tu
-                  compra y dale un toque único a tu estilo.
-                </p>
-              </div>{" "}
-            </div>
-          </div>
-        </div>
         <div id="priceContainer2" className="offer section">
           <div className="prices">
-            <div className="price before">Antes: $299.000</div>
+            <div className="price before">Antes: $229.000</div>
             <div className="price after">HOY: $169.900</div>
           </div>
         </div>
@@ -440,7 +597,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div id="characteristics" className='section'>
+        <div id="characteristics" className="section">
           <h3>Caracteristicas De Tu Morral</h3>
           <div className="textAndImgContainer">
             <div className="imgContainer">
@@ -519,7 +676,7 @@ const Home = () => {
         <div id="cta2" className="section">
           <div className="offer2 ctaContainer3">
             <button onClick={handleOpenForm}>
-              ¡Llevalo y paga en casa!{" "}
+              ¡Pocas Unidades!{" "}
               <svg
                 fill="none"
                 stroke="#ffffff"
@@ -549,7 +706,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div id="securePurchase" className='section'>
+        <div id="securePurchase" className="section">
           <div className="securePurchase">
             <div className="securePurchase_title">
               <span>COMPRA ASEGURADA</span>
@@ -559,7 +716,8 @@ const Home = () => {
           <div className="iconsContainer">
             <div className="icon icon1">
               <div className="imgContainer">
-                <svg
+                <img src="/assets/img/icons/guarante.webp" alt="" />
+                {/* <svg
                   id="icon"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 512 512"
@@ -572,7 +730,7 @@ const Home = () => {
                   <path d="M145.23,174.06a5.76,5.76,0,0,0-1.68,4,5.29,5.29,0,0,0,.12,1.13,5,5,0,0,0,.33,1.06,4.87,4.87,0,0,0,.53,1,5.26,5.26,0,0,0,.7.86,5.94,5.94,0,0,0,.87.72,5.86,5.86,0,0,0,1,.52,6.46,6.46,0,0,0,1.08.34,6,6,0,0,0,1.12.1,5.77,5.77,0,0,0,4.05-1.68,6,6,0,0,0,.72-.86,8,8,0,0,0,.53-1,7.63,7.63,0,0,0,.32-1.06,5.28,5.28,0,0,0,.11-1.13,5.73,5.73,0,0,0-9.79-4Z" />
                   <path d="M270.81,181.3a6.56,6.56,0,0,0,.72.86,5.71,5.71,0,0,0,8.81-.86,4.87,4.87,0,0,0,.53-1,5,5,0,0,0,.33-1.06,5.24,5.24,0,0,0,.12-1.11,5.74,5.74,0,1,0-11.47,0,6,6,0,0,0,.11,1.11,6.51,6.51,0,0,0,.33,1.06A6.87,6.87,0,0,0,270.81,181.3Z" />
                   <path d="M415.51,317.64a27.18,27.18,0,0,0-36.66,2.82l-36.27,39.21a5.74,5.74,0,1,0,8.42,7.79l36.27-39.21a15.64,15.64,0,0,1,21.11-1.62,15.57,15.57,0,0,1,2.37,22.05L347.61,425.9a28.92,28.92,0,0,1-18.3,10.35L207.09,453.94a40.9,40.9,0,0,0-29.77,20.58l-3.34,6H61.55l58.24-86.07a81.93,81.93,0,0,1,76.89-35.77,130.22,130.22,0,0,1,28.93,6.39,59.62,59.62,0,0,0,19.83,3.48h58.45a16.92,16.92,0,0,1,16.9,16.9,18.26,18.26,0,0,1-18.24,18.24H249A37.57,37.57,0,0,0,225,412.35l-12.58,10.44a5.74,5.74,0,0,0,7.33,8.83l12.57-10.44a26.08,26.08,0,0,1,16.62-6h53.59a29.75,29.75,0,0,0,29.71-29.71,28.41,28.41,0,0,0-28.37-28.37H245.44a48.12,48.12,0,0,1-16-2.83,141.49,141.49,0,0,0-31.49-7A93.38,93.38,0,0,0,110.29,388l-64.3,95A5.74,5.74,0,0,0,50.74,492H177.36a5.73,5.73,0,0,0,5-3l5-9a29.4,29.4,0,0,1,21.39-14.78L331,447.6a40.38,40.38,0,0,0,25.54-14.44l63.14-77.22a27,27,0,0,0-4.12-38.3Z" />
-                </svg>
+                </svg> */}
               </div>
               <div className="textContainer">
                 <span>Garantía de devolución</span>
@@ -585,13 +743,14 @@ const Home = () => {
             </div>
             <div className="icon icon2">
               <div className="imgContainer">
-                <svg
+                <img src="/assets/img/icons/safeDelivery.webp" alt="" />
+                {/* <svg
                   viewBox="0 0 30 30"
                   width={"80px"}
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M15.48 12c-.13.004-.255.058-.347.152l-2.638 2.63-1.625-1.62c-.455-.474-1.19.258-.715.712l1.983 1.978c.197.197.517.197.715 0l2.995-2.987c.33-.32.087-.865-.367-.865zM.5 16h3c.277 0 .5.223.5.5s-.223.5-.5.5h-3c-.277 0-.5-.223-.5-.5s.223-.5.5-.5zm0-4h3c.277 0 .5.223.5.5s-.223.5-.5.5h-3c-.277 0-.5-.223-.5-.5s.223-.5.5-.5zm0-4h3c.277 0 .5.223.5.5s-.223.5-.5.5h-3C.223 9 0 8.777 0 8.5S.223 8 .5 8zm24 11c-1.375 0-2.5 1.125-2.5 2.5s1.125 2.5 2.5 2.5 2.5-1.125 2.5-2.5-1.125-2.5-2.5-2.5zm0 1c.834 0 1.5.666 1.5 1.5s-.666 1.5-1.5 1.5-1.5-.666-1.5-1.5.666-1.5 1.5-1.5zm-13-1C10.125 19 9 20.125 9 21.5s1.125 2.5 2.5 2.5 2.5-1.125 2.5-2.5-1.125-2.5-2.5-2.5zm0 1c.834 0 1.5.666 1.5 1.5s-.666 1.5-1.5 1.5-1.5-.666-1.5-1.5.666-1.5 1.5-1.5zm-5-14C5.678 6 5 6.678 5 7.5v11c0 .822.678 1.5 1.5 1.5h2c.676.01.676-1.01 0-1h-2c-.286 0-.5-.214-.5-.5v-11c0-.286.214-.5.5-.5h13c.286 0 .5.214.5.5V19h-5.5c-.66 0-.648 1.01 0 1h7c.66 0 .654-1 0-1H21v-9h4.227L29 15.896V18.5c0 .286-.214.5-.5.5h-1c-.654 0-.654 1 0 1h1c.822 0 1.5-.678 1.5-1.5v-2.75c0-.095-.027-.19-.078-.27l-4-6.25c-.092-.143-.25-.23-.422-.23H21V7.5c0-.822-.678-1.5-1.5-1.5z" />
-                </svg>
+                </svg> */}
               </div>
               <div className="textContainer">
                 <span>Entrega Segura</span>
@@ -604,7 +763,8 @@ const Home = () => {
             </div>
             <div className="icon icon3">
               <div className="imgContainer">
-                <svg
+                <img src="/assets/img/icons/freeDelivery.webp" alt="" />
+                {/* <svg
                   viewBox="0 0 64 64"
                   xmlns="http://www.w3.org/2000/svg"
                   width={"80px"}
@@ -612,7 +772,7 @@ const Home = () => {
                   <g data-name="19 costumer service" id="_19_costumer_service">
                     <path d="M37.71,34.54a13.428,13.428,0,0,0,5.51-4.86H46.7a2.915,2.915,0,0,0,2.74-3.06V19.43a3.124,3.124,0,0,0-.2-1.11V18.3a25.246,25.246,0,0,0-5.2-9.54l-.13-.15a15.275,15.275,0,0,0-5.72-3.97,17.135,17.135,0,0,0-14.11.8,15.539,15.539,0,0,0-3.99,3.17l-.13.15a25.246,25.246,0,0,0-5.2,9.54v.02a3.124,3.124,0,0,0-.2,1.11v7.19a2.915,2.915,0,0,0,2.74,3.06h3.48a13.428,13.428,0,0,0,5.51,4.86,20.226,20.226,0,0,0-15.02,19.5V59.5a1,1,0,0,0,1,1H51.73a1,1,0,0,0,1-1V54.04A20.226,20.226,0,0,0,37.71,34.54Zm9.73-15.11v7.19c0,.56-.35,1.06-.74,1.06H44.29c.17-.42.33-.85.46-1.29,0-.01,0-.01.01-.02a13.235,13.235,0,0,0-.1-8H46.7C47.09,18.37,47.44,18.87,47.44,19.43ZM17.3,27.68c-.39,0-.74-.5-.74-1.06V19.43c0-.56.35-1.06.74-1.06h2.04a13.261,13.261,0,0,0,.37,9.31Zm.26-11.31a22.694,22.694,0,0,1,3.89-6.28l.12-.13A13.124,13.124,0,0,1,25.05,7.2a15.268,15.268,0,0,1,12.41-.7,13.159,13.159,0,0,1,4.97,3.46l.12.13a22.694,22.694,0,0,1,3.89,6.28H43.82a13.311,13.311,0,0,0-23.64,0Zm3.11,6.14A11.33,11.33,0,1,1,43.05,25H39.71a2.991,2.991,0,0,0-2.82-2h-3a3,3,0,0,0,0,6h3a2.991,2.991,0,0,0,2.82-2H42.4a11.329,11.329,0,0,1-21.73-4.49Zm17.22,3.48v.02a.994.994,0,0,1-1,.99h-3a1,1,0,0,1,0-2h3A.994.994,0,0,1,37.89,25.99ZM50.73,58.5H13.27V54.04a18.228,18.228,0,0,1,18.2-18.2h1.06a18.228,18.228,0,0,1,18.2,18.2Z" />
                   </g>
-                </svg>
+                </svg> */}
               </div>
               <div className="textContainer">
                 <span>Atención al Cliente</span>
@@ -626,7 +786,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div id="colorOptions" className='section'>
+        <div id="colorOptions" className="section">
           <h3>Elige Tu estilo</h3>
           <div className="colorOptionsContainer">
             <div className="colorOption green">
@@ -635,18 +795,19 @@ const Home = () => {
               </div>
               <span> Verde Olivo </span>
             </div>
-            <div className="colorOption black">
-              <div className="imgContainer">
-                <img src="assets/img/morralBlack.webp" alt="MorralNegro" />
-              </div>
-              <span>Negro Noche</span>
-            </div>
             <div className="colorOption desierto">
               <div className="imgContainer">
                 <img src="assets/img/MorralCaqui.webp" alt="colorDesierto" />
               </div>
               <span>Color Desierto</span>
             </div>
+            <div className="colorOption black">
+              <div className="imgContainer">
+                <img src="assets/img/morralBlack.webp" alt="MorralNegro" />
+              </div>
+              <span>Negro Noche</span>
+            </div>
+            
           </div>
         </div>
         {/* <div id="banner">
@@ -655,7 +816,7 @@ const Home = () => {
         </div> */}
         <div id="priceContainer2" className="offer">
           <div className="prices">
-            <div className="price before">Antes: $299.000</div>
+            <div className="price before">Antes: $229.000</div>
             <div className="price after">HOY: $169.900</div>
           </div>
         </div>
@@ -692,7 +853,7 @@ const Home = () => {
             </button>
           </div>
         </div>
-        <div id="commonQuestions" className='section'>
+        <div id="commonQuestions" className="section">
           <div className="left">
             <div className="collapse collapse-plus bg-base-200">
               <input type="radio" name="my-accordion-3" />
@@ -770,7 +931,7 @@ const Home = () => {
         </div>
         <div id="priceContainer3" className="offer section">
           <div className="prices">
-            <div className="price before">Antes: $299.000</div>
+            <div className="price before">Antes: $229.000</div>
             <div className="price after">HOY: $169.000</div>
           </div>
           <div className="contraentrega">
@@ -821,7 +982,7 @@ const Home = () => {
             </a>
           </button>
         </div>
-        <footer className='section'>
+        <footer className="section">
           <div className="imgContainer">
             <img src="assets/img/KratosLogo.webp" alt="" />
           </div>

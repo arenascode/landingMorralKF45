@@ -20,6 +20,26 @@
   //* Fonts
   --title-font: "Revamped", sans-serif;
   --body-font: "Bucko", sans-serif;
+  --font-color-light: #1e1e1e; /* Light mode font color */
+  --font-color-dark: #ccc;  /* Dark mode font color */
 }
 
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --font-color-light: #ccc; /* Light mode font color */
+    --font-color-dark: #333;  /* Dark mode font color */
+  }
+}
 
+body {
+  background-color: rgba(131, 170, 147, 0.339);
+  color: var(--font-color-light); /* Default font color */
+}
+
+/* Apply different font color in dark mode */
+@media (prefers-color-scheme: dark) {
+  body {
+    color: var(--font-color-dark); /* Dark mode font color */
+  }
+}
