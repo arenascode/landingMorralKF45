@@ -110,6 +110,7 @@ main {
       //* Mobile
       @include mobile {
         margin-top: 0.2rem;
+        gap: 1rem;
         flex-direction: column;
         padding: 10px;
       }
@@ -120,9 +121,10 @@ main {
         align-items: center;
         @include mobile {
           flex: 1;
-          width: 100%;
-          // height: auto;
-          max-height: 350px;
+          max-width: 100%;
+          height: auto;
+          // max-height: 350px;
+          justify-content: center;
         }
         img {
           height: 100%;
@@ -159,13 +161,13 @@ main {
         color: white;
         @include mobile {
           margin-left: 0;
-          margin-top: 1.5rem;
+          margin-top: 0;
         }
         .reviewsContainer {
           display: flex;
           align-self: flex-start;
           gap: 0.4rem;
-          margin-top: 0.5rem;
+          // margin-top: 20px;
           color: white;
           .rating {
             cursor: pointer;
