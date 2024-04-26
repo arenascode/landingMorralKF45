@@ -92,6 +92,11 @@ main {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.228);
       }
     }
+    @media(prefers-color-scheme: dark) {
+      .mobileTitle {
+        color: rgb(48, 220, 96);
+      }
+    }
     .imgAndTextContainer {
       margin-top: 1rem;
       display: flex;
@@ -139,7 +144,8 @@ main {
           gap: 0.5rem;
           .miniImg {
             flex: 1;
-            height: 50px;
+            height: 60px;
+            width: 60px;
             border-radius: 5px;
             overflow: hidden;
             img {
@@ -485,7 +491,8 @@ main {
         font-weight: 600;
         letter-spacing: 1px;
         @include mobile {
-          font-size: 1.5rem;
+          // font-size: 1.8rem;
+          font-family: sans-serif;
         }
       }
       .bonus {
@@ -526,14 +533,14 @@ main {
             h4 {
               font-size: 1.2rem;
               font-weight: 600;
-              color: var(--color-verdeClaro);
+              // color: var(--color-verdeClaro);
             }
           }
           h4 {
             text-align: center;
             font-size: 1.5rem;
             font-weight: 600;
-            color: var(--color-verdeClaro);
+            // color: var(--color-verdeClaro);
           }
           p {
             text-align: center;
@@ -931,7 +938,7 @@ main {
         margin-top: 8rem;
       }
       @include mobile {
-        margin-top: 26rem;
+        margin-top: 24rem;
       }
     }
   }

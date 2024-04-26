@@ -1,4 +1,5 @@
 @import "../../scss/base";
+@import "../../app.scss";
 
 #modalForm {
   position: fixed;
@@ -22,11 +23,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: white;
+    // background: white;
     padding: 2rem;
     border-radius: 20px;
+    
     @include mobile {
-      padding: 1.6rem;
+      padding: 2rem;
     }
     .closeBtn {
       position: absolute;
@@ -207,6 +209,12 @@
           }
         }
       }
+    }
+  }
+  @media (prefers-color-scheme: dark) {
+    .purchaseForm {
+      background: black;
+      color: var(--font-color-light);
     }
   }
 }
