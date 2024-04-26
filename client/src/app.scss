@@ -41,6 +41,7 @@ body {
 /* Apply different font color in dark mode */
 @media (prefers-color-scheme: dark) {
   body {
-    color: var(--font-color-dark); /* Dark mode font color */
+    color: var(--font-color-dark);/* Dark mode font color */
+    background: var(--color-verdeOscuro);
   }
 }

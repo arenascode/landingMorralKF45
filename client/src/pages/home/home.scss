@@ -94,7 +94,18 @@ main {
     }
     @media(prefers-color-scheme: dark) {
       .mobileTitle {
-        color: rgb(48, 220, 96);
+        color: transparent;
+        background: linear-gradient(
+    20deg,
+    rgb(132, 189, 62) 27%,
+    rgba(81, 123, 31, 1) 60%
+  );
+  /* Clip the background to the text */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Set the text color to transparent to show the gradient background */
+  color: transparent;
       }
     }
     .imgAndTextContainer {
