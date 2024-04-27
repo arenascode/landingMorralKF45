@@ -567,13 +567,13 @@ const Home = () => {
         <div id="cta" className="section">
           <div className="offer2 ctaContainer">
             <button onClick={handleOpenForm}>
-              ¡Llevalo y paga en casa!{" "}
+              ¡Llevalo y Paga en Casa!{" "}
               <svg
                 fill="none"
                 stroke="#ffffff"
                 height="27"
                 viewBox="0 0 30 27"
-                width="30"
+                width="25"
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ fontWeight: 600 }}
                 strokeWidth={2}
@@ -682,7 +682,7 @@ const Home = () => {
                 stroke="#ffffff"
                 height="27"
                 viewBox="0 0 30 27"
-                width="30"
+                width="25"
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ fontWeight: 600 }}
                 strokeWidth={2}
@@ -705,6 +705,10 @@ const Home = () => {
               </svg>
             </button>
           </div>
+        </div>
+        <div id="banner">
+          <h2>Explora los diversos usos del Morral Tactico</h2>
+          <img src="assets/img/usosMorralv3.png" alt="" />
         </div>
         <div id="securePurchase" className="section">
           <div className="securePurchase">
@@ -759,7 +763,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div id="colorOptions" className="section">
+        {/* <div id="colorOptions" className="section">
           <h3>Elige Tu estilo</h3>
           <div className="colorOptionsContainer">
             <div className="colorOption green">
@@ -782,11 +786,8 @@ const Home = () => {
             </div>
             
           </div>
-        </div>
-        {/* <div id="banner">
-          <h2>Explora los diversos usos del Morral Tactico</h2>
-          <img src="assets/img/usosMorralv3.png" alt="" />
         </div> */}
+
         <div id="priceContainer2" className="offer">
           <div className="prices">
             <div className="price before">Antes: $229.000</div>
@@ -796,13 +797,13 @@ const Home = () => {
         <div id="cta3" className="section">
           <div className="ctaContainer">
             <button onClick={handleOpenForm}>
-              ¡QUIERO EL MORRAL!{" "}
+              ¡Quiero El Morral!{" "}
               <svg
                 fill="none"
                 stroke="#ffffff"
                 height="27"
                 viewBox="0 0 30 27"
-                width="30"
+                width="25"
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ fontWeight: 600 }}
                 strokeWidth={2}
@@ -907,18 +908,18 @@ const Home = () => {
             <div className="price before">Antes: $229.000</div>
             <div className="price after">HOY: $169.000</div>
           </div>
-          <div className="contraentrega">
+          {/* <div className="contraentrega">
             Envío <span>GRATIS</span> + Pago <span>CONTRAENTREGA</span>
-          </div>
+          </div> */}
           <div className="ctaContainer">
             <button onClick={handleOpenForm}>
-              ¡Llevalo y paga en casa!{" "}
+              ¡Llevalo y Paga en Casa!{" "}
               <svg
                 fill="none"
                 stroke="#ffffff"
                 height="27"
                 viewBox="0 0 30 27"
-                width="30"
+                width="25"
                 xmlns="http://www.w3.org/2000/svg"
                 style={{ fontWeight: 600 }}
                 strokeWidth={2}
