@@ -1315,12 +1315,10 @@ main {
 
 .wtspIconContainer {
   position: fixed;
-  z-index: 999;
+  z-index: 99;
   bottom: 0;
   right: 0rem;
-  display: none;
   transform: translateY(-40%);
-  // transform: scale(0.9);
   opacity: 0;
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
@@ -1328,5 +1326,4 @@ main {
 .animated-icon.show {
   opacity: 1;
   transform: translate(-22%, -22px);
-  // transform: scale(1);
 }

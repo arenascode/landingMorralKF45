@@ -26,15 +26,11 @@ const Home = () => {
 
   const handleOpenForm = () => {
     fbq.track("OpenForm");
-    console.log("registrando formulario abierto");
     setOpenForm(true);
   };
 
   //* To know until which section the user browsed the page
   const lastSectionVisitedRef = useRef("");
-
-    console.log(window.scrollY);
-
 
   useEffect(() => {
     const sections = document.querySelectorAll(".section");
@@ -63,20 +59,17 @@ const Home = () => {
 
       // Enviar evento de seguimiento personalizado para la sección actual
       if (currentSection && currentSection !== lastSectionVisitedRef.current) {
-        console.log({ currentSectionToSend: currentSection });
         fbq.trackCustom("SectionAchieved", { section: currentSection });
         lastSectionVisitedRef.current = currentSection;
       }
     };
+
     const handleScrollWtsp = () => {
       const scrollPosition = window.scrollY
-      console.log({ scrollPosition });
       const wtspBtnContainer = document.querySelector('.wtspIconContainer')
 
       if (scrollPosition >= 1000) {
-        console.log('its after client reviews');
-
-        console.log({wtspBtnContainer});
+        
         wtspBtnContainer.classList.add('show')
       } else {
         wtspBtnContainer.classList.remove('show');
@@ -954,7 +947,7 @@ const Home = () => {
       </main>
       <div className="wtspIconContainer animated-icon">
         <a
-          href="http://wa.link/ia2d69"
+          href="https://wa.link/ekns0s"
           target="_blank"
           rel="noopener noreferrer"
         >
