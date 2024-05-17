@@ -1,6 +1,9 @@
 @import "../../scss/base";
 // @import "../../app.scss";
 
+.app {
+  position: relative;
+}
 .gradient-text {
   /* Set the background color */
   background: linear-gradient(
@@ -92,20 +95,20 @@ main {
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.228);
       }
     }
-    @media(prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: dark) {
       .mobileTitle {
         color: transparent;
         background: linear-gradient(
-    20deg,
-    rgb(132, 189, 62) 27%,
-    rgba(81, 123, 31, 1) 60%
-  );
-  /* Clip the background to the text */
-  -webkit-background-clip: text;
-  background-clip: text;
+          20deg,
+          rgb(132, 189, 62) 27%,
+          rgba(81, 123, 31, 1) 60%
+        );
+        /* Clip the background to the text */
+        -webkit-background-clip: text;
+        background-clip: text;
 
-  /* Set the text color to transparent to show the gradient background */
-  color: transparent;
+        /* Set the text color to transparent to show the gradient background */
+        color: transparent;
       }
     }
     .imgAndTextContainer {
@@ -495,7 +498,7 @@ main {
         max-width: 100%;
         padding: 0.4rem;
       }
-      
+
       h3 {
         font-size: 1.8rem;
         font-family: var(--title-font);
@@ -836,7 +839,7 @@ main {
       margin-top: 28rem;
       text-align: center;
     }
-    
+
     h3 {
       font-size: 1.8rem;
       font-family: var(--title-font);
@@ -1308,4 +1311,22 @@ main {
       }
     }
   }
+}
+
+.wtspIconContainer {
+  position: fixed;
+  z-index: 999;
+  bottom: 0;
+  right: 0rem;
+  display: none;
+  transform: translateY(-40%);
+  // transform: scale(0.9);
+  opacity: 0;
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+.animated-icon.show {
+  opacity: 1;
+  transform: translate(-22%, -22px);
+  // transform: scale(1);
 }

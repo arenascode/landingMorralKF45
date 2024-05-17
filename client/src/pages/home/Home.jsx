@@ -33,6 +33,9 @@ const Home = () => {
   //* To know until which section the user browsed the page
   const lastSectionVisitedRef = useRef("");
 
+    console.log(window.scrollY);
+
+
   useEffect(() => {
     const sections = document.querySelectorAll(".section");
     const sectionOffsets = {};
@@ -65,8 +68,22 @@ const Home = () => {
         lastSectionVisitedRef.current = currentSection;
       }
     };
+    const handleScrollWtsp = () => {
+      const scrollPosition = window.scrollY
+      console.log({ scrollPosition });
+      const wtspBtnContainer = document.querySelector('.wtspIconContainer')
 
+      if (scrollPosition >= 1000) {
+        console.log('its after client reviews');
+
+        console.log({wtspBtnContainer});
+        wtspBtnContainer.classList.add('show')
+      } else {
+        wtspBtnContainer.classList.remove('show');
+      }
+    }
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScrollWtsp)
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -74,7 +91,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="#app">
+    <div className="app">
       <nav className="nav">
         <p>
           Envío <span>GRATIS</span> + Pago <span>CONTRAENTREGA</span> en todo{" "}
@@ -721,7 +738,6 @@ const Home = () => {
             <div className="icon icon1">
               <div className="imgContainer">
                 <img src="/assets/img/icons/guarante.webp" alt="" />
-              
               </div>
               <div className="textContainer">
                 <span>Garantía de devolución</span>
@@ -735,7 +751,6 @@ const Home = () => {
             <div className="icon icon2">
               <div className="imgContainer">
                 <img src="/assets/img/icons/safeDelivery.webp" alt="" />
-                
               </div>
               <div className="textContainer">
                 <span>Entrega Segura</span>
@@ -749,7 +764,6 @@ const Home = () => {
             <div className="icon icon3">
               <div className="imgContainer">
                 <img src="/assets/img/icons/freeDelivery.webp" alt="" />
-                
               </div>
               <div className="textContainer">
                 <span>Atención al Cliente</span>
@@ -763,31 +777,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        {/* <div id="colorOptions" className="section">
-          <h3>Elige Tu estilo</h3>
-          <div className="colorOptionsContainer">
-            <div className="colorOption green">
-              <div className="imgContainer">
-                <img src="assets/img/morralArmyGreen.webp" alt="morralVerde" />
-              </div>
-              <span> Verde Olivo </span>
-            </div>
-            <div className="colorOption desierto">
-              <div className="imgContainer">
-                <img src="assets/img/MorralCaqui.webp" alt="colorDesierto" />
-              </div>
-              <span>Color Desierto</span>
-            </div>
-            <div className="colorOption black">
-              <div className="imgContainer">
-                <img src="assets/img/morralBlack.webp" alt="MorralNegro" />
-              </div>
-              <span>Negro Noche</span>
-            </div>
-            
-          </div>
-        </div> */}
-
         <div id="priceContainer2" className="offer">
           <div className="prices">
             <div className="price before">Antes: $229.000</div>
@@ -963,6 +952,19 @@ const Home = () => {
           <span className="sign">Creado Por ArenasCode ©</span>
         </footer>
       </main>
+      <div className="wtspIconContainer animated-icon">
+        <a
+          href="http://wa.link/ia2d69"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="/assets/img/icons/showWtsp.webp"
+            alt="wtspIcon"
+            width={50}
+          />
+        </a>
+      </div>
     </div>
   );
 };
