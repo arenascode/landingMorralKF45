@@ -35,7 +35,11 @@
         max-height: 80%;
         padding: 1rem 0 2rem;
         .chartClients {
-         overflow-y: scroll;
+          overflow-y: scroll;
+          @media (prefers-color-scheme: dark) {
+            background: var(--bg-color-dark);
+            color: var(--font-color-dark);
+          }
         }
       }
     }

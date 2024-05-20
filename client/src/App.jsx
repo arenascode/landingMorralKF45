@@ -1,8 +1,5 @@
 import "./app.scss";
 import "./output.css";
-// import Video from "./components/video/Video.jsx";
-// import Form from "./components/form/Form.jsx";
-// import { useState } from "react";
 import {
   Navigate,
   Outlet,
@@ -20,7 +17,7 @@ import { useSessions } from "./context/authContext.jsx";
 function App() {
   
   const { currentUser } = useSessions()
-  
+  // const currentUser = true
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
       return <Navigate to={`/login`} />;

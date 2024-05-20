@@ -31,9 +31,9 @@ const Clientes = () => {
   
   return (
     <div className="overflow-x-auto chartClients rounded-lg">
-      <table className="table table-xs table-pin-rows table-pin-cols bg-white rounded-md">
+      <table className="table table-xs table-pin-rows table-pin-cols bg-white rounded-md dark:bg-black dark:text-gray-300">
         <thead>
-          <tr className="font-bold text-black">
+          <tr className="font-bold text-black dark:text-gray-200 dark:bg-slate-500">
             <td>Nombre</td>
             <td>Email</td>
             <td>Telefono</td>
@@ -63,38 +63,6 @@ const Clientes = () => {
         </tbody>
       </table>
     </div>
-    // <div>
-    //   <table>
-    //     <thead>
-    //       <tr>
-    //         <th>Nombre</th>
-    //         <th>Email</th>
-    //         <th>Ciudad</th>
-    //         <th>Teléfono</th>
-    //         <th>Dirección</th>
-    //         <th>Departamento</th>
-    //         <th>Color Morral</th>
-    //         <th>Valor Compra</th>
-    //         <th>Fecha Compra</th>
-    //       </tr>
-    //     </thead>
-    //     <tbody>
-    //       {clientes.map((cliente) => (
-    //         <tr key={cliente.id}>
-    //           <td>{cliente.nombre}</td>
-    //           <td>{cliente.email}</td>
-    //           <td>{cliente.ciudad}</td>
-    //           <td>{cliente.telefono}</td>
-    //           <td>{cliente.direccion}</td>
-    //           <td>{cliente.departamento}</td>
-    //           <td>{cliente.colorMorral}</td>
-    //           <td>{cliente.valorCompra}</td>
-    //           <td>{cliente.fechaCompra}</td>
-    //         </tr>
-    //       ))}
-    //     </tbody>
-    //   </table>
-    // </div>
   );
 };
 
