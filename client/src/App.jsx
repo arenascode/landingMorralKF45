@@ -17,7 +17,7 @@ import { useSessions } from "./context/authContext.jsx";
 function App() {
   
   const { currentUser } = useSessions()
-  // const currentUser = true
+  
   const ProtectedRoute = ({ children }) => {
     if (!currentUser) {
       return <Navigate to={`/login`} />;
