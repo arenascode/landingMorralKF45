@@ -5,12 +5,22 @@ import Form from "../../components/form/Form.jsx";
 import { useEffect, useRef, useState } from "react";
 import ThanksPage from "../thanksPage/ThanksPage.jsx";
 import ReactPixel from "react-facebook-pixel";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const Home = () => {
   const [openForm, setOpenForm] = useState(false);
   const [openThanksPage, setThanksPage] = useState(false);
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false }, [Autoplay()]);
+
+  useEffect(() => {
+    if (emblaApi) {
+      console.log(emblaApi.slideNodes()); // Access API
+    }
+  }, [emblaApi]);
 
   const changeSlide = (slideId) => {
+    console.log({slideId});
     const targetSlide = document.getElementById(slideId);
     if (targetSlide) {
       targetSlide.scrollIntoView({ block: "nearest", inline: "center" });
@@ -398,7 +408,44 @@ const Home = () => {
         <div id="clientReviews" className="section">
           <h4>Experiencias De Nuestros Clientes</h4>
           <div className="reviewsContainer">
-            <div className="review">
+            <div className="embla" ref={emblaRef}>
+              <div className="embla__container">
+                <div className="embla__slide">
+                  <div className="review">
+                    <div className="containerIphone">
+                      <div id="project1" className="iphone-border">
+                        <div className="screen">
+                          <img src="assets/img/reviews/review1.webp" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="embla__slide">
+                  <div className="review">
+                    <div className="containerIphone">
+                      <div id="project1" className="iphone-border">
+                        <div className="screen">
+                          <img src="assets/img/reviews/review2.webp" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="embla__slide">
+                  <div className="review">
+                    <div className="containerIphone">
+                      <div id="project1" className="iphone-border">
+                        <div className="screen">
+                          <img src="assets/img/reviews/review3.webp" alt="" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* <div className="review">
               <div className="containerIphone">
                 <div id="project1" className="iphone-border">
                   <div className="screen">
@@ -424,7 +471,7 @@ const Home = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
         <div id="getPromoBar2">
