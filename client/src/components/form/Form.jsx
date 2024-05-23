@@ -9,6 +9,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
   const [subtotal, setSubtotal] = useState(0);
   const [notColorSelected, setNotColorSelected] = useState(false);
   const [errMail, setErrMail] = useState(false)
+  const [errID, setErrID] = useState(false)
   const [someErr, setSomeErr] = useState()
   
 
@@ -44,7 +45,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
     e.preventDefault();
     e.target.style.borderBottom = "solid gray"
     e.target.style.borderColor = "gray"
-    const errorMsg = e.target.parentNode.querySelector('span')
+    const errorMsg = e.target.parentNode.querySelector(".emptyFieldError");
     if (errorMsg) {
       errorMsg.innerText = ""
     }
@@ -63,7 +64,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
     const formToSend = new FormData(form)
     formToSend.append("Color", colorSelected)
     inputs.forEach((input) => {
-      const errorChild = input.parentNode.querySelector("span")
+      const errorChild = input.parentNode.querySelector(".emptyFieldError");
       if (errorChild) {
         input.parentNode.removeChild(errorChild)
         
@@ -77,6 +78,7 @@ const Form = ({ setOpenForm, setThanksPage }) => {
         input.style.border = "1px solid #ff5252";
 
         const errorMessage = document.createElement('span');
+        errorMessage.classList.add('emptyFieldError')
         errorMessage.textContent = "llena este campo"
         errorMessage.style.color = "#ff5252"; 
         errorMessage.style.fontSize = "12px";
@@ -88,35 +90,38 @@ const Form = ({ setOpenForm, setThanksPage }) => {
 
     })
     try {
-      if (colorSelected == '') {
-        setNotColorSelected(true)
+      if (colorSelected == "") {
+        setNotColorSelected(true);
       }
       //* Validate eMail
-
       const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-      
-      if (inputs[1].value != '' && !pattern.test(inputs[1].value)) { 
+      if (inputs[1].value != "" && !pattern.test(inputs[1].value)) {
         setErrMail(true);
         return;
       }
-
-      const purchaseData = {}
-      purchaseData.valorCompra = subtotal
-      for (const [key, value] of formToSend.entries()) {
-        
-        purchaseData[key] = value
-        if (value == '' && key !== 'datosAdicionales') {
-          
-          return 
-        }
+      
+      //* Validate ID
+      const IDPattern = /^\d{6,10}$/;
+      if (inputs[3].value != "" && !IDPattern.test(inputs[3].value)) {
+        setErrID(true);
+        return
       }
       
-      await makeRequest.post('/purchase/newPurchase', purchaseData)
-      fbq.track('Purchase', {currency: "COL", value:169900})
-      setOpenForm(false)
-      setThanksPage(true)
-      setSomeErr('')
+      const purchaseData = {};
+      purchaseData.valorCompra = subtotal;
+      for (const [key, value] of formToSend.entries()) {
+        purchaseData[key] = value;
+        if (value == "" && key !== "datosAdicionales") {
+          return;
+        }
+      }
+
+      await makeRequest.post("/purchase/newPurchase", purchaseData);
+      fbq.track("Purchase", { currency: "COL", value: 169900 });
+      setOpenForm(false);
+      setThanksPage(true);
+      setSomeErr("");
     } catch (error) {
       console.log(error);
       setSomeErr(error.message)
@@ -124,7 +129,6 @@ const Form = ({ setOpenForm, setThanksPage }) => {
   };
 
   const closeForm = () => {
-    console.log(`registrando cierre del form`);
     setOpenForm(false)
     fbq.trackCustom('FormClosed')
   }
@@ -137,14 +141,19 @@ const Form = ({ setOpenForm, setThanksPage }) => {
         <div className="purchaseForm_title">
           {/* <h4>¡Pide Tu Morral en OFERTA!</h4>   */}
           <p>
-            ¡Obtén envío <b>GRATIS</b> y <b>Paga al Recibir! </b></p>
-            <span className="gifts">Además lleva con tu compra:
-            <br /> <b>Manual De Uso + Manilla de Supervivencia + Parche Kratos Force</b></span>
+            ¡Obtén envío <b>GRATIS</b> y <b>Paga al Recibir! </b>
+          </p>
+          <span className="gifts">
+            Además lleva con tu compra:
+            <br />{" "}
+            <b>
+              Manual De Uso + Manilla de Supervivencia + Parche Kratos Force
+            </b>
+          </span>
           <br />
           <p className="completeFormText">
-            Completa el formulario a
-            continuación para que te llevemos tu morral directamente a tu
-            puerta.
+            Completa el formulario a continuación para que te llevemos tu morral
+            directamente a tu puerta.
           </p>
         </div>
         <div className="formContainer">
@@ -222,10 +231,14 @@ const Form = ({ setOpenForm, setThanksPage }) => {
                 name="Email"
                 onChange={handleChange}
               />
-              {errMail ? <div className="invalidEmail">Email Invalido</div> : ''}
+              {errMail ? (
+                <div className="invalidEmail">Email Invalido</div>
+              ) : (
+                ""
+              )}
             </label>
             <label htmlFor="telefono">
-              Telefono - Whatsapp
+              Telefono - <span className="clarification">Whatsapp</span>
               <input
                 type="tel"
                 id="telefono"
@@ -233,6 +246,22 @@ const Form = ({ setOpenForm, setThanksPage }) => {
                 name="Telefono"
                 onChange={handleChange}
               />
+            </label>
+            <label htmlFor="cedula">
+              Cedula -{" "}
+              <span className="clarification">Para Emitir tu Factura</span>
+              <input
+                type="tel"
+                id="cedula"
+                placeholder="Solo numeros y sin puntos"
+                name="Cedula"
+                onChange={handleChange}
+              />
+              {errID ? (
+                <div className="invalidID">Formato de Cedula Invalido</div>
+              ) : (
+                ""
+              )}
             </label>
             <div className="ciudadDepartamento">
               <label htmlFor="ciudad">
@@ -276,7 +305,11 @@ const Form = ({ setOpenForm, setThanksPage }) => {
                 onChange={handleChange}
               />
             </label>
-            {notColorSelected && <span className="notColorSelected">Olvidaste Seleccionar el Color!</span>}
+            {notColorSelected && (
+              <span className="notColorSelected">
+                Olvidaste Seleccionar el Color!
+              </span>
+            )}
             {someErr && <span className="errorSending">{someErr}</span>}
             <button className="btn text-white">
               ¡Pedir y Pagar En Casa!{" "}

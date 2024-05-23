@@ -3,6 +3,7 @@ export default class Client {
     nombre,
     email,
     telefono,
+    cedula,
     ciudad,
     departamento,
     direccion,
@@ -13,6 +14,7 @@ export default class Client {
     (this.nombre = nombre),
       (this.email = email),
       (this.telefono = telefono),
+      (this.cedula = cedula),
       (this.ciudad = ciudad),
       (this.departamento = departamento);
     this.direccion = direccion;

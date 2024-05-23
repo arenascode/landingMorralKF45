@@ -7,7 +7,7 @@ class ClientService {
 
   async newClient(clientData) {
     
-    const newClient = new Client(clientData.Nombre, clientData.Email, clientData.Telefono, clientData.Ciudad, clientData.Departamento, clientData.Direccion, clientData.datosAdicionales, clientData.Color, clientData.valorCompra)
+    const newClient = new Client(clientData.Nombre, clientData.Email, clientData.Telefono, clientData.Cedula, clientData.Ciudad, clientData.Departamento, clientData.Direccion, clientData.datosAdicionales, clientData.Color, clientData.valorCompra)
 
     try {
       const clientSaved = await clientRepository.newClient(newClient)

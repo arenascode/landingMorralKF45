@@ -171,6 +171,9 @@
         label {
           font-size: 1rem;
           font-weight: 600;
+          span.clarification {
+            font-size: 0.8rem;
+          }
         }
         input {
           width: 100%;
@@ -186,6 +189,9 @@
           font-size: 12px;
           display: block;
           margin-top: 2px;
+        }
+        .invalidID {
+          @extend .invalidEmail
         }
         .notColorSelected {
           color: #ff5252;

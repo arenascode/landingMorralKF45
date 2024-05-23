@@ -1,9 +1,14 @@
 import axios from "axios";
 
-const API_URL = import.meta.env.VITE_API_URL;
-// const API_TEST = import.meta.env.VITE_API_TEST;
+let API
+
+if (import.meta.env.DEV) {
+  API = import.meta.env.VITE_API_TEST;
+} else {
+  API = import.meta.env.VITE_API_URL;
+}
 
 export const makeRequest = axios.create({
-  baseURL: API_URL,
+  baseURL: API,
   withCredentials: true
 })

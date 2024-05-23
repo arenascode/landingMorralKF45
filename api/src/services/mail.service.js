@@ -40,6 +40,10 @@ class MailService {
       <td>${newClient.telefono}</td>
     </tr>
     <tr>
+      <td><strong>Cedula:</strong></td>
+      <td>${newClient.cedula}</td>
+    </tr>
+    <tr>
       <td><strong>Ciudad:</strong></td>
       <td>${newClient.ciudad}</td>
     </tr>
@@ -77,7 +81,7 @@ class MailService {
 
     const mailOptions = {
       from: "landing Morral KF45",
-      to: mailTo,
+      to: mailTo, 
       subject: "Nueva Venta En tu Landing (KF45)",
       html: templateNotifyPurchase
     }

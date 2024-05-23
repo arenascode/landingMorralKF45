@@ -18,7 +18,7 @@ app.use(cookieParser(secretCookie));
 //       "https://77.37.63.218"
 //     ],
 //     methods: "GET,HEAD,PUT,POST,DELETE",
-//     // credentials: true,
+//     credentials: true,
 //   })
 // );
 app.use(express.json());
